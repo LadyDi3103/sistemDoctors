@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { fadeInAnimation } from './fade-in.animation';
 
 @Component({
   selector: 'app-home-admin',
   templateUrl: './home-admin.component.html',
-  styleUrls: ['./home-admin.component.css']
+  styleUrls: ['./home-admin.component.css'],
+  animations: [fadeInAnimation],
 })
 export default class HomeAdminComponent implements OnInit {
 
