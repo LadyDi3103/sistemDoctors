@@ -3,17 +3,16 @@ import { MedicosService } from 'src/app/services/medicos/medicos.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
-import { DataUserEdit } from 'src/app/interfaces/interfaces';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CreateDoctorModalComponent } from '../create-doctor-modal/create-doctor-modal.component';
 import { EditDoctorModalComponent } from '../edit-doctor-modal/edit-doctor-modal.component';
+import { MatPaginator } from '@angular/material/paginator';
 
 // INTERFACE PARA EL TABLE-HEAD
 export interface Doctor {
-  id: number,
+  // id: number,
   position: number;
   nom_medico: string;
   cod_docum: number;
@@ -28,14 +27,16 @@ export interface Doctor {
   styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['position', 'nom_medico', 'cod_docum', 'celular', 'email', 'direccion', 'acciones'];
+  displayedColumns: string[] = ['nom_medico', 'cod_docum', 'celular', 'email', 'direccion', 'acciones'];
   dataSource = new MatTableDataSource<Doctor>();
 
   showModalEdit: boolean = false;
-  // paciente!: Paciente;
+  doctor!: Doctor;
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   // medicos:any[]=[];
+
 
   // F O R M  R E A C T I V O
   //form: todos los input que recolectan la Data
@@ -52,7 +53,9 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
     private medicosService:MedicosService,
     private _liveAnnouncer: LiveAnnouncer,
     private dialog: MatDialog
-  ) { }
+  ) {
+    // this.dataSource = new MatTableDataSource<Doctor>([]);
+   }
   ngOnInit(): void {
     this.consultarMedicos();
   }
@@ -64,6 +67,14 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
   announceSortChange(sortState: Sort): void {
     const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
     this._liveAnnouncer.announce(`Sorted ${direction}`);
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   consultarMedicos(){
@@ -79,11 +90,11 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
     });
   }
   
-  crearMedico():void{
+  crearUnMedico():void{
       const dialogRef = this.dialog.open(CreateDoctorModalComponent, {
         width: '950px',
         data :{
-          id_medico: null,
+          // id_medico: null,
           nom_medico: '',
           ape_medico: '',
           tip_docum: '',
@@ -99,7 +110,7 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
           this.medicosService.crearMedico(result).subscribe({
             next: (data: any) => {
               console.log(data);
-              console.log(`Medico ${data.id} creado correctamente`);
+              console.log(`Medico ${data.nom_medico} creado correctamente`);
               this.consultarMedicos();
   
             },
@@ -109,7 +120,6 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
           })
         }
         console.log('El diálogo fue cerrado');
-        // Aquí puedes manejar los datos del formulario
         console.log(result);
       });
     }
@@ -168,7 +178,7 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
   private swalSuccess() {
     Swal.fire({
       title: "Borrado!",
-      text: "Tu archivo fue borrado.",
+      text: "El Doctor fue borrado.",
       icon: "success"
     });
   }

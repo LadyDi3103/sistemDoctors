@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './views/login/login.component';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
+import { PacientesComponent } from './views/dashboard/Pacientes/pacientes.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
-import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
-import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
+import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial.component';
+import { HistorialComponent } from './views/dashboard/Historial/historial.component';
 import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
-import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente/datos-paciente.component';
+import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente.component';
 
 const routes: Routes = [
 

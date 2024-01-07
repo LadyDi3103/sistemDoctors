@@ -4,12 +4,15 @@ table {
   
   .mat-mdc-form-field {
     font-size: 14px;
-    width: 100%;
+    width: 90%;
+    margin-right: 10px;
   }
-  
-  td, th {
-    width: 25%;
-  }
+  /* .btn_add_paciente{
+    width: 10%;
+  } */
+  /* td, th { */
+    /* width: 30%; */
+  /* } */
 
   th.mat-sort-header-sorted {
     color: black;
