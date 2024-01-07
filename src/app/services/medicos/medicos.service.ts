@@ -64,8 +64,4 @@ export class MedicosService {
       return of(null);
     }  
   }
-
-
-
-
 }

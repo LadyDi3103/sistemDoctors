@@ -1,18 +1,24 @@
-<h2>Listado de Pacientes</h2>
+<h1>Listado de Pacientes</h1>
 <!-- La tabla se muestra ordenada gracias al ng-container -->
-<mat-card class="w-100 bg-danger">
-
+<mat-card>
+  <div class="d-flex align-items-center">
   <!-- FILTRO -->
   <mat-form-field>
     <mat-label>Filtro</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input autocomplete="off">
+    <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
   </mat-form-field>
   <!-- ------------- -->
+  <button mat-raised-button color="primary" class="ms-2">
+    <mat-icon>person_add</mat-icon>
+    Paciente
+  </button>
+  </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z15" matSort>
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8">
 
     <ng-container matColumnDef="nombrePaciente">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by nombrePaciente">
         Nombre del Paciente
       </th>
       <td mat-cell *matCellDef="let element"> {{element.paciente}}</td>
@@ -21,7 +27,7 @@
 
     DNI Column -
     <ng-container matColumnDef="dni">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by cod_docum">
         DNI
       </th>
       <td mat-cell *matCellDef="let element"> {{element.NumeroDocumento}} </td>
@@ -29,7 +35,7 @@
 
     Telefono Column -
     <ng-container matColumnDef="telefono">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by telefono">
         Teléfono
       </th>
       <td mat-cell *matCellDef="let element"> {{element.Num_Cel}} </td>
@@ -45,7 +51,7 @@
     <!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
     Email Column -
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by email">
         Email
       </th>
       <td mat-cell *matCellDef="let element"> {{element.Email}} </td>
@@ -53,7 +59,7 @@
 
     Dirección Column -
     <ng-container matColumnDef="Dirección">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by direccion">
         Dirección
       </th>
       <td mat-cell *matCellDef="let element"> {{element.Domicilio}} </td>
@@ -61,13 +67,12 @@
 
     Acciones Column -
     <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by acciones">
         Acciones
       </th>
       <td mat-cell *matCellDef="let element"> {{element.acciones}}
-
-        <mat-icon type="button" class="btn__edit me-2 " (click)="eliminarPacientePorId(element)"> delete </mat-icon>
-        <mat-icon type="button" class="btn__delete ms-2 " (click)="openModalToEditPaciente(element)"> edit </mat-icon>
+        <mat-icon type="button" class="btn__edit me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
+        <mat-icon type="button" class="btn__delete ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
       </td>
     </ng-container>
 
@@ -81,4 +86,5 @@
 
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
 </mat-card>

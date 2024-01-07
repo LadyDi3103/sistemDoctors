@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 // import { MatSort, Sort } from '@angular/material/sort';
-import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatSort, MatSortModule, Sort} from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
@@ -9,9 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { DataUserEdit } from 'src/app/interfaces/interfaces';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { EditModalComponent } from '../../edit-modal/edit-modal.component';
+import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
-// import { setTimeout } from 'timers/promises';
 
 
 // INTERFACE PARA EL TABLE-HEAD
@@ -30,10 +29,12 @@ export interface Paciente {
 
 @Component({
   selector: 'app-pacientes',
-  templateUrl: './pacientes.component.html',
+  templateUrl: 'pacientes.component.html',
   styleUrls: ['./pacientes.component.css']
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
+
+  private readonly newProperty = '/pacientes.component.html';
 
   displayedColumns: string[] = ['nombrePaciente', 'dni', 'telefono', 'fechaNacimiento', 'email', 'Dirección', 'acciones'];
   dataSource: MatTableDataSource<Paciente>;
@@ -66,17 +67,17 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    // this.dataSource.sort = this.sort;
     this.consultarPacientes();
-    setTimeout(() => {
-      this.dataSource.sort = this.sort2;
-    }, 2000);
+    // setTimeout(() => {
+    //   this.dataSource.sort = this.sort2;
+    // }, 2000);
   }
   ngAfterViewInit() {
+    this.dataSource.sort = this.sort2;
       this.dataSource.paginator = this.paginator;
       // this.dataSource.paginator.initialized. = "Items por página";
       // this.dataSource.sort = this.sort;
-
+   
     }
 
     applyFilter(event: Event) {
@@ -86,6 +87,11 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       if (this.dataSource.paginator) {
         this.dataSource.paginator.firstPage();
       }
+    }
+
+    announceSortChange(sortState: Sort): void {
+      const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
+      this._liveAnnouncer.announce(`Sorted ${direction}`);
     }
 
   consultarPacientes() {
@@ -125,24 +131,16 @@ export class PacientesComponent implements AfterViewInit, OnInit {
 
   eliminarPacientePorId(paciente: any) {
     console.log(paciente, "paciente");
-  
     if(paciente){
-      const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: "btn btn-success ms-2",
-          cancelButton: "btn btn-danger me-2"
-        },
-        buttonsStyling: false
-      });
-  
-      swalWithBootstrapButtons.fire({
+      Swal.fire({
         title: "Estás seguro?",
         text: "No podrás revertir esto!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "SI, Bórralo!",
-        cancelButtonText: "NO, Cancel!",
-        reverseButtons: true
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "SI, Bórralo!"
+
       }).then((result: any) => {
         if (result.isConfirmed) {
           this.pacientesService.eliminarPaciente(paciente).subscribe({
@@ -169,8 +167,8 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   
 private swalSuccess() {
   Swal.fire({
-    title: "Deleted!",
-    text: "Your file has been deleted.",
+    title: "Borrado!",
+    text: "El Paciente fue borrado.",
     icon: "success"
   });
 }

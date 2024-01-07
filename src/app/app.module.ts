@@ -38,10 +38,9 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { FormsModule } from '@angular/forms';
 import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
-import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente/datos-paciente.component';
-import { PacientesComponent } from './views/dashboard/Pacientes/pacientes/pacientes.component';
-import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial/nuevo-historial.component';
-import { HistorialComponent } from './views/dashboard/Historial/historial/historial.component';
+import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente.component';
+import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial.component';
+import { HistorialComponent } from './views/dashboard/Historial/historial.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -59,7 +58,6 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     SideNavComponent,
     CreaPacienteComponent,
     DatosPacienteComponent,
-    PacientesComponent,
     NuevoHistorialComponent,
     HistorialComponent,
     DoctoresComponent,
