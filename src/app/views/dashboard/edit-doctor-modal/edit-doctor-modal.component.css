@@ -1,0 +1,34 @@
+/* Estilo para el título del diálogo */
+.mat-dialog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Cambia el color según tus preferencias */
+  }
+  mat-dialog-content {
+    padding: 10px;
+  }
+  .mdc-dialog__content {
+    overflow: visible !important;
+  }
+  
+  mat-form-field {
+    margin-bottom: 16px;
+    margin-right: 10px;
+  }
+  
+  .mat-label {
+    font-size: 16px;
+    color: #555; /* Cambia el color según tus preferencias */
+  }
+  
+  /* Estilo para los inputs de formulario */
+  mat-input {
+    font-size: 16px;
+    color: #333; /* Cambia el color según tus preferencias */
+  }
+  .mat-dialog-actions button {
+    margin-right: 8px;
+    margin-left: 8px;
+    font-size: 16px;
+  }
+  
