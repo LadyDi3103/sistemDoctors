@@ -1,15 +1,15 @@
-<h2 mat-dialog-title>Editar Médico</h2>
+<h2 mat-dialog-title>Editar Doctor</h2>
 
 <form [formGroup]="editDoctorForm">
 
 <div mat-dialog-content>
 
-<mat-form-field>
+<mat-form-field class="w-10">
         <mat-label>Id Doctor</mat-label>
-        <input matInput formControlName="id_medico" >
+        <input matInput formControlName="id_medico"[disabled]="true">
 </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="w-40">
     <mat-label>Nombre</mat-label>
     <input matInput formControlName="nom_medico">
   </mat-form-field>
@@ -19,35 +19,39 @@
     <input matInput formControlName="ape_medico">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field appearance="fill">
     <mat-label>Tipo Documento</mat-label>
-    <input matInput formControlName="tip_docum">
+    <mat-select formControlName="tip_docum">
+      <mat-option value="dni">DNI</mat-option>
+      <mat-option value="pasaporte">Pasaporte</mat-option>
+      <mat-option value="libreta">Libreta Electoral</mat-option>
+    </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="w-10">
     <mat-label>Número Documento</mat-label>
     <input matInput formControlName="cod_docum">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="w-20">
     <mat-label>Teléfono</mat-label>
     <input matInput formControlName="celular">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="w-50">
     <mat-label>Email</mat-label>
     <input matInput formControlName="email">
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="w-100">
     <mat-label>Dirección</mat-label>
     <input matInput formControlName="direccion">
   </mat-form-field>
 
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="d-flex justify-content-center m-4 mt-0">
   <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-button (click)="editarUnDoctor()" [mat-dialog-close]="data"  type="submit" color="primary" cdkFocusInitial [disabled]="editDoctorForm.invalid">Editar Doctor</button>
+  <button mat-raised-button (click)="editarUnDoctor()" [mat-dialog-close]="data"  type="submit" color="primary" cdkFocusInitial [disabled]="editDoctorForm.invalid">Editar Doctor</button>
 </div>
 
 </form>

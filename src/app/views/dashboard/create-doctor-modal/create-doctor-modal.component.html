@@ -1,4 +1,5 @@
 <h2 mat-dialog-title>Crear Nuevo Doctor</h2>
+
 <div mat-dialog-content>
 
   <mat-form-field class="w-40">
@@ -25,7 +26,7 @@
     <input matInput [(ngModel)]="data.cod_docum">
   </mat-form-field>
 
-  <mat-form-field class="w-30">
+  <mat-form-field class="w-25">
     <mat-label>Teléfono</mat-label>
     <input matInput [(ngModel)]="data.celular">
   </mat-form-field>
@@ -41,7 +42,7 @@
   </mat-form-field>
 </div>
 
-<div mat-dialog-actions class="d-flex justify-content-center">
+<div mat-dialog-actions class="d-flex justify-content-center m-4 mt-0">
   <button mat-button (click)="cancelar()">Cancelar</button>
   <button mat-raised-button [mat-dialog-close]="data" color="primary" cdkFocusInitial>Crear Nuevo Doctor</button>
 </div>

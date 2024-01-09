@@ -35,8 +35,6 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  // medicos:any[]=[];
-
 
   // F O R M  R E A C T I V O
   //form: todos los input que recolectan la Data
@@ -53,15 +51,15 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
     private medicosService:MedicosService,
     private _liveAnnouncer: LiveAnnouncer,
     private dialog: MatDialog
-  ) {
-    // this.dataSource = new MatTableDataSource<Doctor>([]);
-   }
+  ) {}
+
   ngOnInit(): void {
     this.consultarMedicos();
   }
   
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   announceSortChange(sortState: Sort): void {
@@ -82,7 +80,6 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
       next: (data:any) => {
         this.dataSource.data = data;
         console.log(this.dataSource.data);
-      
       },
       error: (error) => {
         console.log(error);
@@ -112,7 +109,13 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
               console.log(data);
               console.log(`Medico ${data.nom_medico} creado correctamente`);
               this.consultarMedicos();
-  
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `Doctor ${result.nom_medico} ${result.ape_medico} creado exitosamente`,
+                showConfirmButton: false,
+                timer: 1500
+              });
             },
             error: (error) => {
               console.log(`Error al crear el paciente ${result.nom_medico}: $error}`);
@@ -132,8 +135,15 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
       
         dialogRef.afterClosed().subscribe((result: any) => {
           this.consultarMedicos();
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `Doctor ${result.medico.nom_medico} ${result.medico.ape_medico} editado correctamente` ,
+            showConfirmButton: false,
+            timer: 1500
+          });
                 console.log(result.medico);
-                console.log(`Medico ${result.medico.id_medico}editado correctamente`);
+                console.log(`Medico ${result.nom_medico} ${result.ape_medico}editado correctamente`);
               })
             }
 
