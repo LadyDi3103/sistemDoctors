@@ -30,12 +30,12 @@ export interface Paciente {
   styleUrls: ['./pacientes.component.css']
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
+  // paciente: Paciente = [];
   displayedColumns: string[] = ['nombrePaciente', 'dni', 'telefono', 'fechaNacimiento', 'email', 'Dirección', 'acciones'];
-  // dataSource = new MatTableDataSource<Paciente>();
-  dataSource!: MatTableDataSource<any>;
+  dataSource = new MatTableDataSource<Paciente>();
+  // dataSource = new MatTableDataSource();
   
   showModalEdit: boolean = false;
-  paciente!: Paciente;
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -52,7 +52,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   });
 
   constructor(
-    private _liveAnnouncer: LiveAnnouncer,
+    // private _liveAnnouncer: LiveAnnouncer,
     private pacientesService: PacientesService,
     private dialog: MatDialog,
   ) {}
@@ -61,15 +61,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     this.consultarPacientes();
   }
   ngAfterViewInit() {
-    
-    // console.log(this.dataSource.sort, this.sort);
-    
-    // this.dataSource.paginator = this.paginator;
+    this.dataSource.sort= this.sort;
+    this.dataSource.paginator = this.paginator;
   }
-  announceSortChange(sortState: Sort): void {
-    const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-    this._liveAnnouncer.announce(`Sorted ${direction}`);
-  }
+  // announceSortChange(sortState: Sort): void {
+  //   const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
+  //   this._liveAnnouncer.announce(`Sorted ${direction}`);
+  // }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -94,12 +92,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
 
     consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
-      next: (data: any) => {
+      next: (data: Paciente[]) => {
         // this.dataSource.data = data;
-        this.dataSource = new MatTableDataSource(data)
-        // this.dataSource.sort = this.sort;
+        this.dataSource = new MatTableDataSource<Paciente>(data);
+        this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(this.dataSource.data);
+        
+        console.log(this.dataSource, "dataSource");
       },
       error: (error) => {
         console.log(error);
