@@ -1,13 +1,12 @@
-<h1 mat-dialog-title>Editar Paciente</h1>
+<h2 mat-dialog-title>Editar Paciente</h2>
 <div mat-dialog-content>
-  <p>Editar los detalles del paciente aquí:</p>
  <!-- form en form Control name y eso asociar con  el form -->
 
+ <form [formGroup]="formulario2">
 
- <form [formGroup]="formulario2"  class="mat-elevation-z8">
-  <mat-form-field appearance="fill">
-    <mat-label>ID</mat-label>
-    <input matInput id="id" formControlName="id" />
+  <mat-form-field class="w-10">
+    <mat-label>Id Paciente</mat-label>
+    <input matInput id="id" formControlName="id" [disabled]="true">
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -38,7 +37,7 @@
   <button mat-raised-button color="primary" (click)="editarPaciente()" [disabled]="formulario2.invalid">Editar Paciente</button>
 </form>
 
-
+</div>
 
 
 
