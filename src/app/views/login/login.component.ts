@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // debugger
     // Aquí puedes manejar la lógica de autenticación
-    if (this.loginForm.valid && this.loginForm.value.email === 'juan@doctor.pe') {
+    if (this.loginForm.valid && this.loginForm.value.email === 'juan@doctor.pe' && this.loginForm.value.password === "123456") {
       this.router.navigateByUrl('/dashboard');
       console.log('Formulario válido. Enviar datos al servidor.');
     } else {

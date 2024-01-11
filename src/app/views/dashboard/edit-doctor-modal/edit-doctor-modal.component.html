@@ -1,8 +1,7 @@
 <h2 mat-dialog-title>Editar Doctor</h2>
-
-<form [formGroup]="editDoctorForm">
-
 <div mat-dialog-content>
+  
+<form [formGroup]="editDoctorForm">
 
 <mat-form-field class="w-10">
         <mat-label>Id Doctor</mat-label>
@@ -48,10 +47,11 @@
     <input matInput formControlName="direccion">
   </mat-form-field>
 
-</div>
+
 <div mat-dialog-actions class="d-flex justify-content-center m-4 mt-0">
   <button mat-button (click)="cancelar()">Cancelar</button>
   <button mat-raised-button (click)="editarUnDoctor()" [mat-dialog-close]="data"  type="submit" color="primary" cdkFocusInitial [disabled]="editDoctorForm.invalid">Editar Doctor</button>
 </div>
 
 </form>
+</div>
