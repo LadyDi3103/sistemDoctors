@@ -1,16 +1,19 @@
-<h1>Listado de Pacientes</h1>
+
 
 <mat-card>
-  <div class="d-flex align-items-center">
+  <h1 class="text-left textH1 flex-grow-1 ms-2 mt-2">Listado de Pacientes</h1>
+  
+  <div class="d-flex align-items-center mt-2 ml2 ms-2 me-2">
+
   <!-- FILTRO -->
-  <mat-form-field>
+  <mat-form-field class="ms-2">
     <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
   </mat-form-field>
-  <!-- ------------- -->
-  <button mat-raised-button color="primary" class="ms-2">
+
+  <button mat-raised-button color="primary" class="ms-2 mb-2 float-end">
     <mat-icon>person_add</mat-icon>
-    Paciente
+    Registrar Paciente
   </button>
   </div>
 
@@ -65,15 +68,11 @@
         Acciones
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.acciones}}
-        <button mat-raised-button color="primary">
-          <mat-icon>add</mat-icon>
-          Cita
-        </button>
-        <mat-icon type="button" class="btn__details ms-2 me-2"  matTooltip="Detalle"> search</mat-icon>
+        <mat-icon type="button" class="btn__details ms-2 me-2"  matTooltip="Detalle" (click)="setCurrentPatient(element.IdPaciente)"> search</mat-icon>
         <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
         <mat-icon type="button" class="btn__edit ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
       </mat-cell>
-    </ng-container> -->
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
@@ -87,3 +86,5 @@
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
 
 </mat-card>
+
+<app-historial [IdPaciente]="idCurrentPatient"></app-historial>

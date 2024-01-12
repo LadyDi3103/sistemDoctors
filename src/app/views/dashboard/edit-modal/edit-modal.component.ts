@@ -24,12 +24,13 @@ export class EditModalComponent implements OnInit {
     console.log("data NGONINIT: ", this.data);
     
     this.formulario2 = this.formBuilder.group({
-      id: [this.data.paciente.IdPaciente, Validators.required],
-      NombrePaciente: [this.data.paciente.paciente, Validators.required],
-      dni: [this.data.paciente.NumeroDocumento, [Validators.required, ]],
-      Telefono: [this.data.paciente.Num_Cel, [Validators.required, ]],
-      Email: [this.data.paciente.Email, [Validators.required, Validators.email]],
-      Direccion: [this.data.paciente.Domicilio, Validators.required],
+      IdPaciente: [this.data.paciente.IdPaciente],
+      paciente: [this.data.paciente.paciente],
+      IdTipoDocumento:[this.data.paciente.IdTipoDocumento],
+      NumeroDocumento: [this.data.paciente.NumeroDocumento],
+      Num_Cel: [this.data.paciente.Num_Cel],
+      Email: [this.data.paciente.Email],
+      Domicilio: [this.data.paciente.Domicilio],
     });
   }
 
@@ -41,11 +42,11 @@ editarPaciente() {
   this.pacientesService.editarPaciente(this.formulario2.value).subscribe({
     next: (data: any) => {
       console.log(data);
-      this.onClick();
+      // this.cancelar();
       console.log(`Paciente ${this.formulario2.value.id} editado correctamente`);
-      this.pacientesService.getAllPacientes().subscribe({
-        next: (datos:any)=>{
-        console.log(datos, "datos");
+      // this.pacientesService.getAllPacientes().subscribe({
+      //   next: (datos:any)=>{
+      //   console.log(datos, "datos");
         
       },
        error: (error) => {
@@ -54,14 +55,14 @@ editarPaciente() {
       
     });
 
-  },
-    error: (error) => {
-      console.log(`Error al editar el paciente ${this.formulario2.value.id}: ${error}`);
-    }
-  });
+  }
+//     error: (error) => {
+//       console.log(`Error al editar el paciente ${this.formulario2.value.id}: ${error}`);
+//     }
+//   });
 
-}
-onClick(): void {
+// }
+cancelar(): void {
   this.dialogRef.close();
 }
 }

@@ -1,0 +1,32 @@
+/* Estilo para hacer la tabla responsive */
+.mat-table {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+  .textH1{
+    width: 75%;
+    margin-right: 10px;
+  }
+
+  /* Estilo para ajustar el ancho de las columnas en dispositivos pequeños */
+  .mat-column-tratamiento,
+  .mat-column-fecha,
+  .mat-column-ta,
+  .mat-column-fc,
+  .mat-column-kg,
+  .mat-column-cinCad,
+  .mat-column-ejercicio {
+    max-width: 150px; /* Ajusta según sea necesario */
+    word-wrap: break-word;
+  }
+  
+  /* Estilo para el encabezado en dispositivos pequeños */
+  .mat-header-row {
+    min-width: auto;
+  }
+  
+  /* Estilo para las celdas en dispositivos pequeños */
+  .mat-cell {
+    min-width: auto;
+  }
+

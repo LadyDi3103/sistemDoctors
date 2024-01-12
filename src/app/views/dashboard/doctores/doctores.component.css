@@ -25,3 +25,30 @@ th.mat-sort-header-sorted {
 .btn__delete {
   color: #B03048;
 }
+
+
+/* Estilo para el mat-form-field */
+.mat-form-field {
+  width: 100%; /* Ajusta el ancho según tus necesidades */
+  margin-bottom: 20px; /* Puedes ajustar el margen inferior según tus necesidades */
+}
+
+/* Estilo para la etiqueta dentro de mat-form-field */
+.mat-form-field-label {
+  color: #333; /* Cambia el color del texto de la etiqueta según tus necesidades */
+}
+
+/* Estilo para el input dentro de mat-form-field */
+.mat-input-element {
+  border: 1px solid #ccc; /* Ajusta el borde del input según tus necesidades */
+  border-radius: 5px; /* Puedes cambiar el radio de la esquina del borde según tus necesidades */
+  padding: 8px; /* Ajusta el relleno del input según tus necesidades */
+  width: 100%; /* Hace que el input ocupe todo el ancho del mat-form-field */
+}
+
+/* Estilo para el input cuando está enfocado */
+.mat-input-element:focus {
+  outline: none; /* Elimina el contorno de enfoque predeterminado */
+  border-color: #007bff; /* Cambia el color del borde cuando el input está enfocado */
+}
+  

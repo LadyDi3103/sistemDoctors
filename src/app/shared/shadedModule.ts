@@ -4,7 +4,6 @@ import FooterComponent from './shared-components/footer/footer.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { EditModalComponent } from '../views/dashboard/edit-modal/edit-modal.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
@@ -13,7 +12,6 @@ import { MatInputModule } from '@angular/material/input';
 declarations: [ 
     HeaderComponent,
     FooterComponent,
-    EditModalComponent,
 
 ],
 imports: [
@@ -28,8 +26,6 @@ imports: [
 exports: [
 HeaderComponent,
 FooterComponent,
-EditModalComponent,
-
 ]
 })
 export class sharedModule {} 

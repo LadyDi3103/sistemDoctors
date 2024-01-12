@@ -10,10 +10,12 @@ import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 
 
+
 // INTERFACE PARA EL TABLE-HEAD
 export interface Paciente {
   IdPaciente?: number,
   paciente: string;
+  IdTipoDocumento: string;
   NumeroDocumento: number;
   Num_Cel: string;
   FNac: Date;
@@ -40,12 +42,14 @@ interface TransforPaciente{
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
   // paciente: Paciente = [];
+  idCurrentPatient = 0;
   displayedColumns: string[] = ['paciente', 'NumeroDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
-  dataSource = new MatTableDataSource<TransforPaciente>();
+  dataSource = new MatTableDataSource<Paciente>();
   // dataSource = new MatTableDataSource();
   
   showModalEdit: boolean = false;
-
+  paciente!: Paciente;
+  
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -202,5 +206,11 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       icon: "error"
     });
   }
+
+  setCurrentPatient(Id:any):void{
+    this.idCurrentPatient = Id;
+    console.log(Id, "ID")
+    }
+    
 
 }
