@@ -10,19 +10,30 @@ import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 
 
+
 // INTERFACE PARA EL TABLE-HEAD
 export interface Paciente {
-  id: number,
+  IdPaciente?: number,
+  paciente: string;
+  IdTipoDocumento: string;
+  NumeroDocumento: number;
+  Num_Cel: string;
+  FNac: Date;
+  Email: string;
+  Domicilio: string;
+}
+
+interface TransforPaciente{
+  id?: number,
   position: number;
   nombrePaciente: string;
-  dni: number;
+  DNI: number;
   telefono: string;
   fechaNacimiento: Date;
   email: string;
   Direccion: string;
   acciones: string;
 }
-
 
 @Component({
   selector: 'app-pacientes',
@@ -31,12 +42,14 @@ export interface Paciente {
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
   // paciente: Paciente = [];
-  displayedColumns: string[] = ['nombrePaciente', 'dni', 'telefono', 'fechaNacimiento', 'email', 'Dirección', 'acciones'];
+  idCurrentPatient = 0;
+  displayedColumns: string[] = ['paciente', 'NumeroDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
   dataSource = new MatTableDataSource<Paciente>();
   // dataSource = new MatTableDataSource();
   
   showModalEdit: boolean = false;
-
+  paciente!: Paciente;
+  
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -90,13 +103,20 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   //   });
   // }
 
-    consultarPacientes() {
+  consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
       next: (data: Paciente[]) => {
-        // this.dataSource.data = data;
-        this.dataSource = new MatTableDataSource<Paciente>(data);
+        // Transforma la estructura de datos para agregar la propiedad nombrePaciente
+        const datosTransformados = data.map(paciente => ({
+          ...paciente,
+          nombrePaciente: paciente.paciente,
+          DNI:paciente.NumeroDocumento
+        }));
+        console.log(datosTransformados,"DATOS");
+
+        // Asigna la nueva estructura a this.dataSource
+        this.dataSource = new MatTableDataSource<any>(data);
         this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
         
         console.log(this.dataSource, "dataSource");
       },
@@ -186,5 +206,11 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       icon: "error"
     });
   }
+
+  setCurrentPatient(Id:any):void{
+    this.idCurrentPatient = Id;
+    console.log(Id, "ID")
+    }
+    
 
 }

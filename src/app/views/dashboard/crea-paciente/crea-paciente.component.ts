@@ -98,11 +98,6 @@ get nombrePaciente(){
   return this.form.controls['paciente'];
 }
 
-// get tipoGenero() {
-//   return this.form.controls['genderType']; // Cambiado de 'gender-type' a 'genderType'
-// }
-
-
   onCancelClick() {
     // Restablecer los valores del formulario a su estado inicial
     this.form.reset({

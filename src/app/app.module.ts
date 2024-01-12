@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -39,16 +39,18 @@ import { FormsModule } from '@angular/forms';
 import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente.component';
-import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial.component';
-import { HistorialComponent } from './views/dashboard/Historial/historial.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
 
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
 
+// idioma
+import es from '@angular/common/locales/es'
+import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
 
+registerLocaleData(es)
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +60,6 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
     SideNavComponent,
     CreaPacienteComponent,
     DatosPacienteComponent,
-    NuevoHistorialComponent,
-    HistorialComponent,
     DoctoresComponent,
   
 
@@ -101,7 +101,8 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
   DashboardModule, 
 
   ],
-  providers: [{provide: MatPaginatorIntl}],
+  providers: [    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
