@@ -65,6 +65,10 @@
         Acciones
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.acciones}}
+        <button mat-raised-button color="primary">
+          <mat-icon>add</mat-icon>
+          Cita
+        </button>
         <mat-icon type="button" class="btn__details ms-2 me-2"  matTooltip="Detalle"> search</mat-icon>
         <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
         <mat-icon type="button" class="btn__edit ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
