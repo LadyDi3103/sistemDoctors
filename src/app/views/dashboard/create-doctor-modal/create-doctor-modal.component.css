@@ -11,6 +11,9 @@
   mat-dialog-content {
     padding: 10px;
   }
+  .example-full-width {
+    width: 100%;
+  }
   
   .mdc-dialog__content {
     overflow: visible !important;

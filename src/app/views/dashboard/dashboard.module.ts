@@ -16,11 +16,20 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
+import { HistorialComponent } from './Historial/historial.component';
+import { DialogCitaComponent } from './dialog-cita/dialog-cita.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 @NgModule({
   declarations: [
     CreateDoctorModalComponent,
     EditDoctorModalComponent,
     PacientesComponent,
+    HistorialComponent,
+    DialogCitaComponent,
+    EditModalComponent,
   ],
   imports: [
     CommonModule,
@@ -37,6 +46,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatTooltipModule,
     MatSelectModule,
-  ]
+    HttpClientModule,
+    MatGridListModule,
+  ],
+  providers: [PacientesService],
 })
 export class DashboardModule { }

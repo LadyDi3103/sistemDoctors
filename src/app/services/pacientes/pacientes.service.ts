@@ -14,6 +14,8 @@ export class PacientesService {
 
   constructor(private router: Router, private httpClient: HttpClient) { } 
 
+
+
   crearPaciente(datos: any): Observable<any>{
     const headers = new HttpHeaders({
       'accept': 'application/json',
@@ -64,8 +66,16 @@ export class PacientesService {
       }  
     }
 
+    getCitaData(paciente: any): Observable<any> {
+      const headers = new HttpHeaders({
+        'accept': 'application/json',
+      })
+
+      return this.httpClient.get<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.IdPaciente}`,{headers});
+    
   }
 
+}
 
 
 

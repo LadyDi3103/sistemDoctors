@@ -1,15 +1,15 @@
-<h1>Listado de Doctores</h1>
+
 
 <mat-card>
-
-  <div class="d-flex align-items-center">
+  <h1 class="text-left textH1 flex-grow-1 ms-2 mt-2">Listado de Doctores</h1>
+  <div class="d-flex align-items-center mt-2 ml2 ms-2 me-2">
   <!-- FILTRO -->
-  <mat-form-field>
+  <mat-form-field class="ms-2">
     <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
   </mat-form-field>
   <!-- ------------- -->
-  <button mat-raised-button color="primary" type="button" (click)="crearUnMedico()"  class="btn primary ms-2">
+  <button mat-raised-button color="primary" type="button" (click)="crearUnMedico()"  class="ms-2 mb-2 float-end">
     <mat-icon>person_add</mat-icon>
     Doctor
   </button>
@@ -63,8 +63,8 @@
       </th>
       <td mat-cell *matCellDef="let element"> {{element.acciones}}
           <mat-icon type="button" class="btn__details ms-2 me-2"  matTooltip="Detalle"> search</mat-icon>
-          <mat-icon type="button" class="btn__delete ms-2 me-2" (click)="eliminarMedicoPorId(element)" matTooltip="Borrar"> delete </mat-icon>
-          <mat-icon type="button" class="btn__edit ms-2 me-2" (click)="openModalToEditMedico(element)" matTooltip="Editar"> edit </mat-icon>
+          <mat-icon type="button" class="btn__delete me-2" (click)="eliminarMedicoPorId(element)" matTooltip="Borrar"> delete </mat-icon>
+          <mat-icon type="button" class="btn__edit ms-2" (click)="openModalToEditMedico(element)" matTooltip="Editar"> edit </mat-icon>
       </td>
     </ng-container>
   
