@@ -49,6 +49,7 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
 // idioma
 import es from '@angular/common/locales/es'
 import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 registerLocaleData(es)
 @NgModule({
@@ -65,6 +66,7 @@ registerLocaleData(es)
 
   ],
   imports: [
+    FullCalendarModule,
     FormsModule,
     CommonModule,
     RouterModule,

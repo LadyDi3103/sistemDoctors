@@ -106,18 +106,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
       next: (data: Paciente[]) => {
-        // Transforma la estructura de datos para agregar la propiedad nombrePaciente
-        const datosTransformados = data.map(paciente => ({
-          ...paciente,
-          nombrePaciente: paciente.paciente,
-          DNI:paciente.NumeroDocumento
-        }));
-        console.log(datosTransformados,"DATOS");
-
-        // Asigna la nueva estructura a this.dataSource
-        this.dataSource = new MatTableDataSource<any>(data);
+        // Asigna los datos a this.dataSource.data
+        this.dataSource.data = data;
+  
+        // Configura el ordenamiento y la paginación
         this.dataSource.sort = this.sort;
-        
+        this.dataSource.paginator = this.paginator;
+  
         console.log(this.dataSource, "dataSource");
       },
       error: (error) => {
@@ -125,6 +120,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       }
     });
   }
+  
 
 
   openModalToEditPaciente(paciente: any) {

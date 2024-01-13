@@ -79,6 +79,8 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
     this.medicosService.getAllMedicos().subscribe({
       next: (data:any) => {
         this.dataSource.data = data;
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         console.log(this.dataSource.data);
       },
       error: (error) => {
