@@ -15,7 +15,6 @@ export class EditDoctorModalComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: any,
     private medicosService: MedicosService,
     private formBuilder: FormBuilder,
-    
     ) {} 
 
     ngOnInit(): void {

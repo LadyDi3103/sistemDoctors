@@ -39,8 +39,6 @@ import { FormsModule } from '@angular/forms';
 import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente.component';
-import { NuevoHistorialComponent } from './views/dashboard/NuevoHistorial/nuevo-historial.component';
-import { HistorialComponent } from './views/dashboard/Historial/historial.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
@@ -63,8 +61,6 @@ registerLocaleData(es)
     SideNavComponent,
     CreaPacienteComponent,
     DatosPacienteComponent,
-    NuevoHistorialComponent,
-    HistorialComponent,
     DoctoresComponent,
   
 
