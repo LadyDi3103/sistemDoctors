@@ -50,6 +50,7 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
 import es from '@angular/common/locales/es'
 import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
 import { FullCalendarModule } from '@fullcalendar/angular';
+import { CreateCitaComponent } from './components/create-cita/create-cita/create-cita.component';
 
 registerLocaleData(es)
 @NgModule({
@@ -62,6 +63,7 @@ registerLocaleData(es)
     CreaPacienteComponent,
     DatosPacienteComponent,
     DoctoresComponent,
+    CreateCitaComponent,
   
 
   ],
