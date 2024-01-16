@@ -17,4 +17,11 @@ export class CitasService {
       return res.result;
     }));
   }
+  createCita(data:any){
+    return this.http.post(`${environment.BASE_URL_BACK}/citas`,data).pipe(map((res:any)=>{
+      console.log(res,"RESPONSE");
+      
+      return res.result;
+    }));
+  }
 }

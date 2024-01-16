@@ -1,0 +1,25 @@
+<form action="" [formGroup]="form" (submit)="handleSubmit()">
+  <label for="motivo">Motivo</label>
+  <input
+    formControlName="motivo"
+    placeholder="Motivo"
+    id="motivo"
+    type="text"
+  />
+  <label for="paciente">idPaciente</label>
+  <select formControlName="idPaciente" name="paciente" id="paciente">
+    <option value="14">14</option>
+  </select>
+  <label for="idmedico">idMedico</label>
+  <select formControlName="idMedico" name="idmedico" id="idmedico">
+    <option value="1">1</option>
+  </select>
+  <label for="motivo">Fecha</label>
+  <input
+    formControlName="fecha"
+    placeholder="Motivo"
+    id="motivo"
+    type="datetime-local"
+  />
+  <input type="submit" value="Enviar" />
+</form>

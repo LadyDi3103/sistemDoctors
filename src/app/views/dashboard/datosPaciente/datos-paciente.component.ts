@@ -8,9 +8,8 @@ import { EventInput } from '@fullcalendar/core';
 import { CitasService } from 'src/app/services/citas/citas.service';
 import { firstValueFrom } from 'rxjs';
 import * as moment from 'moment';
-
+import esLocale from '@fullcalendar/core/locales/es'
 let eventGuid = 0;
-const TODAY_STR = new Date().toISOString().slice(0, 10); // YYYY-MM-DD of today
 
 export function createEventId() {
   return String(eventGuid++);
@@ -33,6 +32,7 @@ export class DatosPacienteComponent implements OnInit {
   edit = false;
 
   calendarOptions: CalendarOptions = {
+    locale:esLocale,
     plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, listPlugin],
     eventClick: this.handleDateClick.bind(this),
     headerToolbar: {
@@ -41,7 +41,7 @@ export class DatosPacienteComponent implements OnInit {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
     },
     events: INITIAL_EVENTS,
-    titleFormat: { year: 'numeric', month: 'numeric', day: '2-digit' } // formato personalizado
+    titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' } // formato personalizado
 };
 
   handleDateClick(arg: any) {
