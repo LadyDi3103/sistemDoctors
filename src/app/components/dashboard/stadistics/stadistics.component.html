@@ -1,0 +1,13 @@
+<div style="text-align: center;">
+    <h1>Statistics Works!</h1>
+    <div style="display: grid;place-items:center; background-color: blueviolet;">
+        Pacientes dados de alta {{totalPacientes}}
+    </div>
+    <div style="display: grid;place-items:center; background-color: blueviolet;">
+        Pacientes mayores de edad {{totalPacientesMayoresEdad}}
+    </div>
+    <div style="display: grid;place-items:center; background-color: blueviolet;">
+        Pacientes menores de edad {{totalPacientesMenoresEdad}}
+    </div>
+    <app-my-line-chart [totalPacientesMayoresEdad]="totalPacientesMayoresEdad" [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"></app-my-line-chart>
+</div>
