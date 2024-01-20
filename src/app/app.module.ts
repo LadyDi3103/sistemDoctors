@@ -54,6 +54,9 @@ import { CreateCitaComponent } from './components/create-cita/create-cita/create
 import { StadisticsComponent } from './components/dashboard/stadistics/stadistics.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MyLineChartComponent } from './charts/my-line-chart/my-line-chart.component';
+import { PieChartComponent } from './charts/pie-chart/pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/doughnut-chart.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
 
 registerLocaleData(es)
 @NgModule({
@@ -68,8 +71,10 @@ registerLocaleData(es)
     DoctoresComponent,
     CreateCitaComponent,
     StadisticsComponent,
-    MyLineChartComponent
-  
+    MyLineChartComponent,
+    PieChartComponent,
+    DoughnutChartComponent,
+    BarChartComponent
 
   ],
   imports: [

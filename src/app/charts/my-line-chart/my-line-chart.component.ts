@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { BaseChartDirective } from 'ng2-charts';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
@@ -7,44 +8,48 @@ import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
   templateUrl: './my-line-chart.component.html',
   styleUrls: ['./my-line-chart.component.css']
 })
-export class MyLineChartComponent implements OnChanges {
+export class MyLineChartComponent {
   @Input() totalPacientesMayoresEdad: any = 0;
   @Input() totalPacientesMenoresEdad: any = 0;
+  @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-  public pieChartOptions: ChartConfiguration['options'] = {
-    // ... tus opciones de gráfica ...
+  public pieChartOptions: ChartConfiguration['options'] = {};
+
+  get pieChartData(): ChartData<'line', number[], string | string[]>  {
+    // setInterval(()=>{
+    //   this.totalPacientesMayoresEdad= 30;
+    // },5000)
+    // console.log("ENTRA");
+    
+    return{
+      labels: ['Menores', 'Mayores'],
+      datasets: [
+        {
+          data: [this.totalPacientesMenoresEdad],
+        },
+        {
+          data: [this.totalPacientesMayoresEdad],
+        },
+      ],
+    }
   };
 
-  public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: ['Menores', 'Mayores'],
-    datasets: [
-      {
-        data: [0,0],
-      },
-    ],
-  };
-
-  public pieChartType: ChartType = 'pie';
+  public pieChartType: ChartType = 'line';
   public pieChartPlugins = [DatalabelsPlugin];
 
   constructor() {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // Este método se llama cuando hay cambios en las propiedades de entrada
-    if (changes['totalPacientesMayoresEdad'] || changes['totalPacientesMenoresEdad']) {
-      this.actualizarGrafica();
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes?.['totalPacientesMayoresEdad'] || changes?.['totalPacientesMenoresEdad']) {
+  //     this.updateChartData();
+  //   }
+  // }
 
-  private actualizarGrafica(): void {
-    // Actualizar los datos de la gráfica con los nuevos valores
-    this.pieChartData = {
-      labels: ['Menores', 'Mayores'],
-      datasets: [
-        {
-          data: [this.totalPacientesMenoresEdad, this.totalPacientesMayoresEdad],
-        },
-      ],
-    };
-  }
+  // private updateChartData() {
+  //   this.pieChartData.datasets[0].data = [this.totalPacientesMayoresEdad, this.totalPacientesMenoresEdad];
+  //   // Forzar la actualización del gráfico
+  //   if (this.chart) {
+  //     this.chart.update();
+  //   }
+  // }
 }
