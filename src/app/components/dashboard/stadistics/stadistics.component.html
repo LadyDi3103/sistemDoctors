@@ -14,11 +14,17 @@
       <div style="display: flex; gap: 20px">
         <div style="width: 400px; height: 100px; background-color: bisque">
           <h1>Pacientes atendios durante el mes</h1>
-          <h2>4,352</h2>
+          <h2>
+            <div *ngIf="pacientesAtendidosMes; else cargandoTemplate">
+              <h1>{{ pacientesAtendidosMes }}</h1>
+            </div>
+
+            <ng-template #cargandoTemplate> Cargando... </ng-template>
+          </h2>
         </div>
         <div style="width: 400px; height: 100px; background-color: bisque">
           <h1>Pacientes nuevos durante el mes</h1>
-          <h2>10</h2>
+          <h2>{{ ultimosPacientesMes ? ultimosPacientesMes : "Cargando" }}</h2>
         </div>
       </div>
       <div style="display: flex; gap: 30px">
@@ -35,20 +41,23 @@
               width: 400px;
               height: 200px;
               box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+              overflow-y: scroll;
             "
           >
-            <table style="border-spacing: 20px">
+            <table style="border-spacing: 20px; box-sizing: border-box">
               <tr>
                 <th>HIRA</th>
                 <th>PACIENTE</th>
                 <th>DOCUMENT</th>
                 <th>TRATAMIENTO</th>
               </tr>
-              <tr>
-                <td style="padding: 15px">HIRA</td>
-                <td style="padding: 15px">PACIENTE</td>
+              <tr *ngFor="let cita of dataCitas">
+                <td style="padding: 15px">
+                  {{ cita!.fecha | date : "h:mm a" }}
+                </td>
+                <td style="padding: 15px">{{ cita.id_paciente }}</td>
                 <td style="padding: 15px">DOCUMENT</td>
-                <td style="padding: 15px">TRATAMIENTO</td>
+                <td style="padding: 15px">{{ cita.tratamiento }}</td>
               </tr>
             </table>
           </div>
@@ -71,10 +80,7 @@
               box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
             "
           >
-            <app-pie-chart
-              [totalPacientesMayoresEdad]="totalPacientesMayoresEdad"
-              [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"
-            ></app-pie-chart>
+            <app-pie-chart [chartData]="chartData"></app-pie-chart>
           </div>
           <div
             style="
@@ -83,10 +89,10 @@
               box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
             "
           >
-            <app-pie-chart
+            <!-- <app-pie-chart
               [totalPacientesMayoresEdad]="totalPacientesMayoresEdad"
               [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"
-            ></app-pie-chart>
+            ></app-pie-chart> -->
           </div>
         </div>
       </div>
@@ -111,7 +117,7 @@
           box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
         "
       >
-        <app-bar-chart></app-bar-chart>
+        <!-- <app-bar-chart></app-bar-chart> -->
       </div>
       <div
         style="
