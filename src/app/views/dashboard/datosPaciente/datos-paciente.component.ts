@@ -15,7 +15,7 @@ export function createEventId() {
   return String(eventGuid++);
 }
 
-export const INITIAL_EVENTS: EventInput[] = [];
+export let INITIAL_EVENTS: EventInput[] = [];
 
 @Component({
   selector: 'app-datos-paciente',
@@ -52,6 +52,7 @@ export class DatosPacienteComponent implements OnInit {
     alert('date click! ' + arg.dateStr);
   }
   async getCitas() {
+    INITIAL_EVENTS= [];
     const result = await firstValueFrom(this.citasService.getCitas());
     console.log('Citas obtenidas:', result);
 
