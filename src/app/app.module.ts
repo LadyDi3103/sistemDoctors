@@ -51,6 +51,12 @@ import es from '@angular/common/locales/es'
 import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CreateCitaComponent } from './components/create-cita/create-cita/create-cita.component';
+import { StadisticsComponent } from './components/dashboard/stadistics/stadistics.component';
+import { NgChartsModule } from 'ng2-charts';
+import { MyLineChartComponent } from './charts/my-line-chart/my-line-chart.component';
+import { PieChartComponent } from './charts/pie-chart/pie-chart/pie-chart.component';
+import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/doughnut-chart.component';
+import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
 
 registerLocaleData(es)
 @NgModule({
@@ -64,10 +70,15 @@ registerLocaleData(es)
     DatosPacienteComponent,
     DoctoresComponent,
     CreateCitaComponent,
-  
+    StadisticsComponent,
+    MyLineChartComponent,
+    PieChartComponent,
+    DoughnutChartComponent,
+    BarChartComponent
 
   ],
   imports: [
+    NgChartsModule,
     FullCalendarModule,
     FormsModule,
     CommonModule,
@@ -102,7 +113,8 @@ registerLocaleData(es)
     MatGridListModule,
     MatFormFieldModule,
     MatDialogModule,
-  DashboardModule, 
+  DashboardModule,
+  NgChartsModule, 
 
   ],
   providers: [    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }

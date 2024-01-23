@@ -8,6 +8,7 @@ import { HistorialComponent } from './views/dashboard/Historial/historial.compon
 import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-paciente.component';
+import { StadisticsComponent } from './components/dashboard/stadistics/stadistics.component';
 
 const routes: Routes = [
 
@@ -36,6 +37,10 @@ const routes: Routes = [
     path: 'dashboard' ,//TODO: http://localhost:4200/ <--- /home
     component: DashboardComponent,
     children:[
+      {
+        path:'' ,
+        component: StadisticsComponent,
+      },
       {
         path:'doctores' ,
         component: DoctoresComponent,

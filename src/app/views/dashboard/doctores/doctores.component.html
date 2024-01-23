@@ -1,10 +1,10 @@
 
 
-<mat-card>
-  <h1 class="text-left textH1 flex-grow-1 ms-2 mt-2">Listado de Doctores</h1>
-  <div class="d-flex align-items-center mt-2 ml2 ms-2 me-2">
+<mat-card class="p-3">
+  <h1 class="text-center textH1 flex-grow-1 ms-2 mt-2">Listado de Doctores</h1>
+  <div class="d-flex align-items-center mt-2 ml2 me-2">
   <!-- FILTRO -->
-  <mat-form-field class="ms-2">
+  <mat-form-field>
     <mat-label>Filtro</mat-label>
     <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
   </mat-form-field>
@@ -14,7 +14,7 @@
     Doctor
   </button>
   </div>
-
+  
   <table mat-table [dataSource]="dataSource" matSort matSortChange="announceSortChange($event)" class="mat-elevation-z8">
     
     <ng-container matColumnDef="nom_medico">

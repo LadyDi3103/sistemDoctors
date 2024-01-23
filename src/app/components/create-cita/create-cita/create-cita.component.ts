@@ -21,7 +21,6 @@ export class CreateCitaComponent {
   async handleSubmit(){
     console.log(this.form.value);
     const response = await firstValueFrom(this.citasService.createCita(this.form.value))
-    console.log(response,"RESPIONSNDNSDMASNDN");
-    
+
   } 
 }

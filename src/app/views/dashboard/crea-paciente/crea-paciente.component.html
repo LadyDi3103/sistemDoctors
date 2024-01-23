@@ -1,13 +1,13 @@
-<div class="example-container">
+<div class="example-container p-2">
 
   <!-- ********************************************************** -->
-  <h1>DATOS DEL PACIENTE</h1>
+  <h2 class="text-center">DATOS DEL PACIENTE</h2>
   <h2>Informacion Personal</h2>
   <div [formGroup]="form" class="crea-paciente-details-form">
     <!-- input nombre del paciente -->
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-      
+
       <mat-grid-tile [colspan]="7">
         <mat-form-field class="form-field example-full-width" floatLabel="auto" hintLabel="Max 60 caracteres">
           <mat-label>Nombre del Paciente</mat-label>
@@ -48,43 +48,72 @@
     </mat-grid-list>
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
+
+      <mat-grid-tile [colspan]="3">
+        <!-- Sexo -->
+        <mat-form-field class="form-field example-full-width" floatLabel="auto">
+          <mat-label>Sexo</mat-label>
+          <mat-select formControlName="genderType" placeholder="Seleccionar">
+            <mat-option value="Femenino">FEMENINO</mat-option>
+            <mat-option value="Masculino">MASCULINO</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="3">
+        <!-- TipoDocumento -->
+        <mat-form-field class="form-field example-full-width" floatLabel="auto">
+          <mat-label>Tipo Documento</mat-label>
+          <mat-select formControlName="tipoDocumento" placeholder="Seleccionar">
+            <mat-option value="DNI">DNI</mat-option>
+            <mat-option value="PASAPORTE">PASAPORTE</mat-option>
+            <mat-option value="LIBRETA ELECTORAL">LIBRETA ELECTORAL</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
       <mat-grid-tile [colspan]="3">
         <!-- DNI -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>DNI</mat-label>
-          <input matInput placeholder="Ex 11111111" formControlName="DNI" type="text">
+          <mat-label>N. Documento</mat-label>
+          <input matInput placeholder="Ex 11111111" formControlName="NumeroDocumento" type="text">
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="3">
 
-        <!-- Telefono -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Teléfono</mat-label>
-          <input matInput placeholder="Ex 4416 5390" formControlName="Tel" type="text">
-        </mat-form-field>
-      </mat-grid-tile>
       <mat-grid-tile [colspan]="3">
-
-        <!-- FNac -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Fecha de Nacimiento</mat-label>
-          <input matInput placeholder="Ex 31/03/1987" formControlName="FNac" type="text">
-        </mat-form-field>
-      </mat-grid-tile>
-      <mat-grid-tile [colspan]="3">
-
         <!-- cel -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Celular</mat-label>
           <input matInput placeholder="Ex 999 999 999" formControlName="Cel" type="text">
         </mat-form-field>
       </mat-grid-tile>
-    </mat-grid-list>
 
+
+    </mat-grid-list>
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
 
-      <mat-grid-tile [colspan]="3">
+      <mat-grid-tile [colspan]="8">
+        <!-- Email -->
+        <mat-form-field class="form-field example-full-width" floatLabel="auto">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Ex ejemplo@ejemplo.com" formControlName="Email" type="text">
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="4">
+        <!-- FNac -->
+        <mat-form-field class="form-field example-full-width" floatLabel="auto">
+          <mat-label>F. Nacimiento</mat-label>
+          <input matInput placeholder="31/03/1987" formControlName="FNac" type="text">
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+
+    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
+
+      <mat-grid-tile [colspan]="2">
         <!-- Hijos -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>N hijos</mat-label>
@@ -93,7 +122,7 @@
 
       </mat-grid-tile>
 
-      <mat-grid-tile [colspan]="9">
+      <mat-grid-tile [colspan]="10">
         <!-- Domicilio -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Domicilio</mat-label>
@@ -103,10 +132,6 @@
       </mat-grid-tile>
 
     </mat-grid-list>
-
-
-
-
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
       <mat-grid-tile [colspan]="6">
@@ -135,10 +160,7 @@
 
     </mat-grid-list>
 
-
-
-
-    <h2>Antecedentes pacientes</h2>
+    <h2>Antecedentes del Paciente</h2>
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
       <mat-grid-tile [colspan]="8">
@@ -192,13 +214,9 @@
           <mat-label>NOC</mat-label>
           <input matInput placeholder="" formControlName="NOC" type="text">
         </mat-form-field>
-
-
       </mat-grid-tile>
 
     </mat-grid-list>
-
-
 
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
@@ -219,8 +237,6 @@
         </mat-form-field>
       </mat-grid-tile>
 
-
-
       <mat-grid-tile [colspan]="2">
         <!-- CIG -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
@@ -236,9 +252,6 @@
 
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
 
-
-
-
       <mat-grid-tile [colspan]="12">
         <!-- AntPers -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
@@ -249,303 +262,6 @@
 
     </mat-grid-list>
 
-
-    <h2>Detalles de la consulta </h2>
-
-    <mat-grid-list cols="12">
-      <mat-grid-tile [colspan]="12" [rowspan]="3" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Consulta</mat-label>
-          <textarea matInput placeholder="" formControlName="Consulta" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-        </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
-      <mat-grid-tile [colspan]="7">
-        <!-- O/S -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>O/S</mat-label>
-          <input matInput placeholder="" formControlName="OS" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="5">
-        <!-- Diag -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Diagnóstico</mat-label>
-          <input matInput placeholder="" formControlName="diag" type="text">
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-
-    <mat-grid-list cols="12">
-      <mat-grid-tile [colspan]="12" [rowspan]="3" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Síntomas</mat-label>
-          <textarea matInput placeholder="" formControlName="symptoms" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-        </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-    <mat-grid-list cols="12">
-
-      <mat-grid-tile [colspan]="12" [rowspan]="2" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Signos</mat-label>
-          <textarea matInput placeholder="Signos" formControlName="signs" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-        </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-
-    </mat-grid-list>
-
-
-
-    <mat-grid-list cols="12">
-
-      <mat-grid-tile [colspan]="12" [rowspan]="2" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Psique</mat-label>
-          <textarea matInput placeholder="Psique" formControlName="psique" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-      </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-
-    </mat-grid-list>
-
-    <mat-grid-list cols="12">
-      <mat-grid-tile [colspan]="12" [rowspan]="2" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Tp Ant.</mat-label>
-          <textarea matInput placeholder="" formControlName="TpAnt" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-        </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-    <mat-grid-list cols="12">
-      <mat-grid-tile [colspan]="12" [rowspan]="2" gutterSize="15">
-        <mat-form-field class="example-full-width full-heigth">
-          <mat-label>Fcos</mat-label>
-          <textarea matInput placeholder="Fcos." formControlName="Fcos" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-            [cdkAutosizeMaxRows]="7">
-        </textarea>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-
-
-
-
-    <h2>Estado nutricional</h2>
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
-      <mat-grid-tile [colspan]="2">
-        <!-- EST -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>EST</mat-label>
-          <input matInput placeholder="" formControlName="EST" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- peso -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto" hintLabel="Kg (BMI)">
-          <mat-label>Peso I kg</mat-label>
-          <input matInput placeholder="" formControlName="PesoKG" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <!-- <mat-grid-tile [colspan]="2" >
-    <mat-form-field class="form-field example-full-width" floatLabel="auto">
-      <mat-label>Kg (BMI)</mat-label>
-      <input matInput placeholder="kg (BMI)" formControlName="KG" type="text">
-    </mat-form-field>
-
-      </mat-grid-tile> -->
-
-
-      <mat-grid-tile [colspan]="6">
-
-        <!-- Diag -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Diagnóstico</mat-label>
-          <input matInput placeholder="" formControlName="diag" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- PT -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto" hintLabel="Kg (BMI)">
-          <mat-label>PT±</mat-label>
-          <input matInput placeholder="" formControlName="PT" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-      <!-- 
-          <mat-grid-tile [colspan]="2" >
-    <mat-form-field class="form-field example-full-width" floatLabel="auto">
-      <mat-label>BMI</mat-label>
-      <input matInput placeholder="BMI" formControlName="BMI" type="text">
-    </mat-form-field>
-        
-              </mat-grid-tile> -->
-
-    </mat-grid-list>
-
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- DES -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>DES</mat-label>
-          <input matInput placeholder="" formControlName="DES" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- MM -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>MM</mat-label>
-          <input matInput placeholder="" formControlName="MM" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- ALM -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>ALM</mat-label>
-          <input matInput placeholder="" formControlName="ALM" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- LON -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>LON</mat-label>
-          <input matInput placeholder="" formControlName="LON" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="2">
-
-        <!-- CEN -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>CEN</mat-label>
-          <input matInput placeholder="" formControlName="CEN" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="2">
-        <!-- FDS -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>FDS</mat-label>
-          <input matInput placeholder="" formControlName="FDS" type="text">
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
-      <mat-grid-tile [colspan]="6">
-        <!-- Dlk -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Dlk</mat-label>
-          <input matInput placeholder="" formControlName="Dlk" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-      <mat-grid-tile [colspan]="6">
-        <!-- Like -->
-        <mat-form-field class="form-field example-full-width" floatLabel="auto">
-          <mat-label>Like</mat-label>
-          <input matInput placeholder="" formControlName="Like" type="text">
-        </mat-form-field>
-
-      </mat-grid-tile>
-
-
-    </mat-grid-list>
-
-
-
-    <!-- radio button -->
-    <!-- <mat-radio-group class="gender-type" formControlName="genderype">
-
-    <mat-radio-button value="Masculino">Masculino </mat-radio-button>
-<mat-radio-button value="Femenino">Femenino </mat-radio-button>
-
-</mat-radio-group> -->
-
-
-    <!-- select -->
-    <!-- <mat-form-field appearance="fill">
-    <mat-select formControlName="genderType" placeholder="Sexo">
-        <mat-option >Ninguno</mat-option>
-        <mat-option value="masculino">Masculino</mat-option>
-        <mat-option value="femenino">Femenino</mat-option>
-    </mat-select>
-</mat-form-field> -->
-
-    <mat-grid-list cols="5">
-
-      <!-- textarea -->
-      <!-- <mat-grid-tile>
-      <mat-form-field appearance="outline">
-        <mat-label>Síntomas</mat-label>
-        <textarea matInput placeholder="" formControlName="symptoms" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
-          [cdkAutosizeMaxRows]="7">
-
-        </textarea>
-      </mat-form-field>
-    </mat-grid-tile> -->
-
-
-
-    </mat-grid-list>
-
     <section>
       <div class="example-button-row">
         <button mat-raised-button (click)="onCancelClick">Cancelar</button>
@@ -553,5 +269,5 @@
       </div>
     </section>
 
-
   </div>
+</div>

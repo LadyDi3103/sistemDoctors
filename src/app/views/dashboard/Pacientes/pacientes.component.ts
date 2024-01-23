@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { CreaPacienteComponent } from '../crea-paciente/crea-paciente.component';
 
 
 
@@ -121,6 +122,88 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     });
   }
   
+  crearUnPaciente():void{
+    const dialogRef = this.dialog.open(CreaPacienteComponent, {
+      width: '950px',
+      data :{
+        paciente: ' ',
+        edad: ' ',
+        appointment: ' ',
+        genderType: ' ',
+        IdTipoDocumento: ' ',
+        NumeroDocumento: ' ',
+        Num_Cel: ' ',
+        Email: ' ',
+        FNac: ' ',
+        Hijos: ' ',
+        Domicilio: ' ',
+        Ocupac: ' ',
+        Gpo: ' ',
+        EC: ' ',
+        alergias: ' ',
+        MEN: ' ',
+        SÑO: ' ',
+        Cirugias: ' ',
+        CPO: ' ',
+        NOC: ' ',
+        AntFam: ' ',
+        ANS: ' ',
+        CIG: ' ',
+        AntPer: ' '
+      }
+    });
+
+    // paciente: ' ',
+    // edad: ' ',
+    // appointment: ' ',
+    // genderType: ' ',
+    // IdTipoDocumento: ' ',
+    // NumeroDocumento: ' ',
+    // Num_Cel: ' ',
+    // Email: ' ',
+    // FNac: ' ',
+    // Hijos: ' ',
+    // symptoms: ' ',
+    // signs: ' ',
+    // Domicilio: ' ',
+    // Ocupac: ' ',
+    // Gpo: ' ',
+    // EC: ' ',
+    // alergias: ' ',
+    // MEN: ' ',
+    // SÑO: ' ',
+    // Cirugias: ' ',
+    // CPO: ' ',
+    // NOC: ' ',
+    // AntFam: ' ',
+    // ANS: ' ',
+    // CIG: ' ',
+    // AntPer: ' '
+  
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if(result){
+        this.pacientesService.crearPaciente(result).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            console.log(`Paciente ${data.paciente} creado correctamente`);
+            this.consultarPacientes();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `Paciente ${result.paciente} creado exitosamente`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          error: (error) => {
+            console.log(`Error al crear el paciente ${result.nom_medico}: $error}`);
+          }
+        })
+      }
+      console.log('El diálogo fue cerrado');
+      console.log(result);
+    });
+  }
 
 
   openModalToEditPaciente(paciente: any) {
