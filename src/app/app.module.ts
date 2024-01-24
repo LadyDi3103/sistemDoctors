@@ -58,6 +58,7 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart/pie-chart.compon
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/doughnut-chart.component';
 import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
 
+
 registerLocaleData(es)
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ registerLocaleData(es)
     MyLineChartComponent,
     PieChartComponent,
     DoughnutChartComponent,
-    BarChartComponent
+    BarChartComponent,
+ 
 
   ],
   imports: [

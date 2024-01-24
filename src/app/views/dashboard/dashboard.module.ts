@@ -22,6 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
+import { DetalleHistorialComponent } from './detalle-historial/detalle-historial-component';
+
+
 @NgModule({
   declarations: [
     CreateDoctorModalComponent,
@@ -30,6 +33,7 @@ import { EditModalComponent } from './edit-modal/edit-modal.component';
     HistorialComponent,
     DialogCitaComponent,
     EditModalComponent,
+DetalleHistorialComponent
   ],
   imports: [
     CommonModule,

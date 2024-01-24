@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { PacientesService } from '../../../services/pacientes/pacientes.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -47,9 +48,11 @@ AntPers:[],
 
 
 
-constructor(private fb: FormBuilder, private pacientesService: PacientesService){
-
-}
+constructor(
+  private fb: FormBuilder, 
+  private pacientesService: PacientesService,
+  public dialogRef: MatDialogRef<CreaPacienteComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any){}
 
 crearPacienteNuevo(){
   if(this.form.valid){
@@ -89,6 +92,10 @@ get nombrePaciente(){
       this.form.get(controlName)?.markAsUntouched();
     });
   }
+  cancelar(): void {
+    this.dialogRef.close();
+  }
+
 }
 
 

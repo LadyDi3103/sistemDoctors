@@ -264,8 +264,8 @@
 
     <section>
       <div class="example-button-row">
-        <button mat-raised-button (click)="onCancelClick">Cancelar</button>
-        <button mat-raised-button color="primary" (click)="crearPacienteNuevo()">Crear Paciente</button>
+        <button mat-raised-button (click)="cancelar()">Cancelar</button>
+        <button mat-raised-button  [mat-dialog-close]="data" color="primary" (click)="crearPacienteNuevo()" >Crear Paciente</button>
       </div>
     </section>
 

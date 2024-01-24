@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { CreaPacienteComponent } from '../crea-paciente/crea-paciente.component';
+import { DetalleHistorialComponent } from '../detalle-historial/detalle-historial-component';
 
 
 
@@ -66,7 +67,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
   });
 
   constructor(
-    // private _liveAnnouncer: LiveAnnouncer,
     private pacientesService: PacientesService,
     private dialog: MatDialog,
   ) {}
@@ -78,10 +78,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     this.dataSource.sort= this.sort;
     this.dataSource.paginator = this.paginator;
   }
-  // announceSortChange(sortState: Sort): void {
-  //   const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-  //   this._liveAnnouncer.announce(`Sorted ${direction}`);
-  // }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -91,18 +88,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     }
   }
 
-
-  // consultarPacientes() {
-  //   this.pacientesService.getAllPacientes().subscribe({
-  //     next: (data: any) => {
-  //       this.dataSource.data = data;
-  //       console.log(this.dataSource.data);
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     }
-  //   });
-  // }
 
   consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
@@ -152,34 +137,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
         AntPer: ' '
       }
     });
-
-    // paciente: ' ',
-    // edad: ' ',
-    // appointment: ' ',
-    // genderType: ' ',
-    // IdTipoDocumento: ' ',
-    // NumeroDocumento: ' ',
-    // Num_Cel: ' ',
-    // Email: ' ',
-    // FNac: ' ',
-    // Hijos: ' ',
-    // symptoms: ' ',
-    // signs: ' ',
-    // Domicilio: ' ',
-    // Ocupac: ' ',
-    // Gpo: ' ',
-    // EC: ' ',
-    // alergias: ' ',
-    // MEN: ' ',
-    // SÑO: ' ',
-    // Cirugias: ' ',
-    // CPO: ' ',
-    // NOC: ' ',
-    // AntFam: ' ',
-    // ANS: ' ',
-    // CIG: ' ',
-    // AntPer: ' '
-  
     dialogRef.afterClosed().subscribe((result: any) => {
       if(result){
         this.pacientesService.crearPaciente(result).subscribe({
@@ -204,7 +161,15 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       console.log(result);
     });
   }
-
+  mostrarDetalleHistorial(pacienteId: string) {
+    this.pacientesService.getPacienteById(pacienteId)
+      .subscribe((detalleHistorial) => {
+        this.dialog.open(DetalleHistorialComponent, {
+          data: { detalleHistorial },
+          width: '950px', // Ajusta el tamaño según tus necesidades
+        });
+      });
+  }
 
   openModalToEditPaciente(paciente: any) {
     console.log(paciente, "paciente EDITAR PACIENTES.COMPONENT")
@@ -293,3 +258,30 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     
 
 }
+
+    // paciente: ' ',
+    // edad: ' ',
+    // appointment: ' ',
+    // genderType: ' ',
+    // IdTipoDocumento: ' ',
+    // NumeroDocumento: ' ',
+    // Num_Cel: ' ',
+    // Email: ' ',
+    // FNac: ' ',
+    // Hijos: ' ',
+    // symptoms: ' ',
+    // signs: ' ',
+    // Domicilio: ' ',
+    // Ocupac: ' ',
+    // Gpo: ' ',
+    // EC: ' ',
+    // alergias: ' ',
+    // MEN: ' ',
+    // SÑO: ' ',
+    // Cirugias: ' ',
+    // CPO: ' ',
+    // NOC: ' ',
+    // AntFam: ' ',
+    // ANS: ' ',
+    // CIG: ' ',
+    // AntPer: ' '
