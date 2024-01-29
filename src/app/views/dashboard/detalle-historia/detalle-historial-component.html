@@ -1,0 +1,101 @@
+<div class="container p-3">
+    <h2 mat-dialog-title class="text-center">
+        Historia  del Paciente
+        <button mat-icon-button mat-dialog-close aria-label="Cerrar" class="close-button">
+            <mat-icon>close</mat-icon>
+        </button>
+    </h2>
+
+    <div class="linea">
+        <div class="bloque">
+            <!-- <h3><strong> 1.Información Personal </strong></h3> -->
+            <p class="w-50"><strong>Nombre:</strong> {{ paciente?.paciente }}</p>
+            <p class="w-25"><strong>Edad:</strong> {{ paciente?.edad }}  <span class="separator"></span><strong> Sexo:</strong> {{ paciente?.genderType}}</p>
+            <p class="w-25"><strong>OS:</strong> {{ paciente?.OS }}</p>
+
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Datos Médicos</h3> -->
+            <p class="w-25"><strong>Diagnóstico:</strong> {{ paciente?.diag }}</p>
+            <p class="w-25"><strong>Tipo Documento:</strong> {{ paciente?.IdTipoDocumento}}</p>
+            <p class="w-25"><strong>N. Documento:</strong> {{ paciente?.NumeroDocumento }}</p>
+            <p class="w-25"><strong>Ocupación:</strong> {{ paciente?.Ocupac}}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Contacto</h3> -->
+            <p class="w-50"><strong>Domicilio:</strong> {{ paciente?.Domicilio }}</p>
+            <p class="w-25"><strong>Teléfono:</strong> {{ paciente?.Num_Telf }}</p>
+            <p class="w-25"><strong>Celular:</strong> {{ paciente?.Num_Cel }}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Información Familiar</h3> -->
+            <p class="w-25"><strong>Gpo:</strong> {{ paciente?.Gpo }}</p>
+            <p class="w-25"><strong>EC:</strong> {{ paciente?.EC }}</p>
+            <p class="w-25"><strong>Hijos:</strong> {{ paciente?.Hijos }}</p>
+            <p class="w-25"><strong>Fecha Nacimiento:</strong> {{ paciente?.FNac }}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Antecedentes Personales</h3> -->
+            <p class="w-25"><strong>Email:</strong> {{ paciente?.Email }}</p>
+            <p class="w-25"><strong>Alergias:</strong> {{ paciente?.alergias }}</p>
+            <p class="w-25"><strong>MEN:</strong> {{ paciente?.MEN}}</p>
+            <p class="w-25"><strong>SÑO:</strong> {{ paciente?.['SÑO'] }}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Información Procedimientos previos</h3> -->
+            <p class="w-50"><strong>Cirugías:</strong> {{ paciente?.Cirugias }}</p>
+            <p class="w-25"><strong>CPO:</strong> {{ paciente?.CPO }}</p>
+            <p class="w-25"><strong>NOC:</strong> {{ paciente?.NOC }}</p>
+        </div>
+    
+        <div class="bloque">
+            <!-- <h3>Antecedentes Familiares y Personales</h3> -->
+            <p class="w-50"><strong>AntFam:</strong> {{ paciente?.AntFam }}</p>
+            <p class="w-50"><strong>AntPer:</strong> {{ paciente?.AntPer }}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Información de Salud</h3> -->
+            <p class="w-25"><strong>ANS:</strong> {{ paciente?.ANS }}</p>
+            <p class="w-25"><strong>CIG:</strong> {{ paciente?.CIG}}</p>
+            <p class="w-25"><strong>EST:</strong> {{ paciente?.EST }}</p>
+            <p class="w-25"><strong>PesoKG:</strong> {{ paciente?.PesoKG }}</p>
+        </div>
+
+        <div class="bloque">
+            <!-- <h3>Mediciones y Físico</h3> -->
+            <p class="w-25"><strong>BMI:</strong> {{ paciente?.BMI }}</p>
+            <p class="w-25"><strong>PT:</strong> {{ paciente?.PT}}</p>
+            <p class="w-25"><strong>KG:</strong> {{ paciente?.KG}}</p>
+            <p class="w-25"><strong>DES:</strong> {{ paciente?.DES }}</p>
+        </div>
+        
+        <div class="bloque">
+            <!-- <h3>Detalles Corporales</h3> -->
+            <p class="w-25"><strong>MM:</strong> {{ paciente?.MM }}</p>
+            <p class="w-25"><strong>ALM:</strong> {{ paciente?.ALM}}</p>
+            <p class="w-25"><strong>LON:</strong> {{ paciente?.LON }}</p>
+            <p class="w-25"><strong>CEN:</strong> {{ paciente?.CEN }}</p>
+        </div>
+                
+        <div class="bloque">
+            <!-- <h2>Datos Adicionales</h2> -->
+            <p class="w-25"><strong>FDS:</strong> {{ paciente?.FDS }}</p>
+            <p class="w-25"><strong>Dlk:</strong> {{ paciente?.Dlk}}</p>
+            <p class="w-25"><strong>Likes:</strong> {{ paciente?.Likes }}</p>
+            <p class="w-25"><strong>Paciente Registrado:</strong> {{ paciente?.created_at | date: 'dd/MM/yyyy'}}</p>
+        </div>
+
+
+
+
+    </div>
+
+
+    <app-historial></app-historial>
+</div>

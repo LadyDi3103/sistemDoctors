@@ -1,0 +1,26 @@
+<div class="ng-container p-3">
+    <h2>Detalles de la consulta </h2>
+
+    <mat-grid-list cols="12">
+      <mat-grid-tile [colspan]="12" [rowspan]="3" gutterSize="15">
+        <mat-form-field class="example-full-width full-heigth">
+          <mat-label>Consulta</mat-label>
+          <textarea matInput placeholder="" formControlName="Consulta" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
+            [cdkAutosizeMaxRows]="7">
+        </textarea>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols="12">
+        <mat-grid-tile [colspan]="12" [rowspan]="3" gutterSize="15">
+          <mat-form-field class="example-full-width full-heigth">
+            <mat-label>Síntomas</mat-label>
+            <textarea matInput placeholder="" formControlName="symptoms" cdkTextareaAutosize [cdkAutosizeMinRows]="5"
+              [cdkAutosizeMaxRows]="7">
+          </textarea>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+</div>

@@ -21,7 +21,7 @@ export class EditDoctorModalComponent implements OnInit{
       console.log("data: ", this.data);
       
       this.editDoctorForm = this.formBuilder.group({
-        id_medico: [this.data.medico.id_medico],
+        id:[this.data.medico.id],
         nom_medico: [this.data.medico.nom_medico],
         ape_medico: [this.data.medico.ape_medico],
         tip_docum: [this.data.medico.tip_docum],

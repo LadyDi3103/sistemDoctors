@@ -45,19 +45,20 @@ export class PacientesService {
         'accept': 'application/json',
       })
       const body = {
-        IdPaciente: paciente.id,
-        paciente: paciente.NombrePaciente,
-        NumeroDocumento: paciente.dni,
-        Num_Cel: paciente.Telefono,
-        Domicilio: paciente.Direccion,
+        paciente: paciente.paciente,
+        IdTipoDocumento: paciente.IdTipoDocumento,
+        NumeroDocumento: paciente.NumeroDocumento,
+        Num_Cel: paciente.Num_Cel,
         Email: paciente.Email,
+        Domicilio: paciente.Domicilio,
+     
       };
 
       console.log("BODY 70: ", body );
       
       console.log("PACIENTE: ",paciente);
       
-      return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.id}`, body,{headers});
+      return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.IdPaciente}`, body,{headers});
       
     }
   

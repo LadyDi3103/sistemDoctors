@@ -16,13 +16,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { HistorialComponent } from './Historial/historial.component';
+import { HistorialComponent } from './Historial-atenciones/historial.component';
 import { DialogCitaComponent } from './dialog-cita/dialog-cita.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EditModalComponent } from './edit-modal/edit-modal.component';
-import { DetalleHistorialComponent } from './detalle-historial/detalle-historial-component';
+import { DetalleHistorialComponent } from './detalle-historia/detalle-historial-component';
+import { ListaCitasComponent } from './lista-citas/lista-citas.component';
+import { FormAtencionCitaComponent } from './form-atencion-cita/form-atencion-cita.component';
+import { DialogService } from '../../services/dialog/dialog.service';
 
 
 @NgModule({
@@ -33,7 +36,9 @@ import { DetalleHistorialComponent } from './detalle-historial/detalle-historial
     HistorialComponent,
     DialogCitaComponent,
     EditModalComponent,
-DetalleHistorialComponent
+DetalleHistorialComponent,
+ListaCitasComponent,
+FormAtencionCitaComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +58,7 @@ DetalleHistorialComponent
     HttpClientModule,
     MatGridListModule,
   ],
-  providers: [PacientesService],
+  providers: [PacientesService,
+  DialogService],
 })
 export class DashboardModule { }

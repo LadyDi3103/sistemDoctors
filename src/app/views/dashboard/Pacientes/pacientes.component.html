@@ -1,6 +1,6 @@
 
 
-<mat-card class="p-3">
+<mat-card class="p-2">
   <h1 class="text-center textH1 flex-grow-1 ms-2 mt-2">Listado de Pacientes</h1>
   
   <div class="d-flex align-items-center mt-2 ml2 me-2">
@@ -27,11 +27,11 @@
     </ng-container>
     
 
-    <ng-container matColumnDef="NumeroDocumento">
+    <ng-container matColumnDef="IdTipoDocumento">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
-        DNI
+        Tipo Documento
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.NumeroDocumento}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.IdTipoDocumento}} {{element.NumeroDocumento}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Num_Cel">
@@ -45,7 +45,7 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Fecha Nacimiento
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.FNac }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.FNac | date: 'dd/MM/yyyy'}} </mat-cell>
     </ng-container>
     <!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
 
@@ -88,4 +88,4 @@
 
 </mat-card>
 
-<app-historial [IdPaciente]="idCurrentPatient"></app-historial>
+<!-- <app-historial [IdPaciente]="idCurrentPatient"></app-historial> -->

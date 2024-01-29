@@ -9,7 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 import { CreaPacienteComponent } from '../crea-paciente/crea-paciente.component';
-import { DetalleHistorialComponent } from '../detalle-historial/detalle-historial-component';
+import { DetalleHistorialComponent } from '../detalle-historia/detalle-historial-component';
 
 
 
@@ -43,9 +43,9 @@ interface TransforPaciente{
   styleUrls: ['./pacientes.component.css']
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
-  // paciente: Paciente = [];
+
   idCurrentPatient = 0;
-  displayedColumns: string[] = ['paciente', 'NumeroDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
+  displayedColumns: string[] = ['paciente', 'IdTipoDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
   dataSource = new MatTableDataSource<Paciente>();
   // dataSource = new MatTableDataSource();
   
@@ -61,7 +61,8 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     email: new FormControl(''),
     id: new FormControl(''),
     NombrePaciente: new FormControl(''),
-    dni: new FormControl(''),
+    IdTipoDocumento: new FormControl(''),
+    NumeroDocumento: new FormControl(''),
     Telefono: new FormControl(),
     Direccion: new FormControl(''),
   });
@@ -166,7 +167,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
       .subscribe((detalleHistorial) => {
         this.dialog.open(DetalleHistorialComponent, {
           data: { detalleHistorial },
-          width: '950px', // Ajusta el tamaño según tus necesidades
+          width: '950px', 
         });
       });
   }

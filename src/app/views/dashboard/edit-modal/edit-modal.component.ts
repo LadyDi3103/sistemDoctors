@@ -43,7 +43,7 @@ editarPaciente() {
     next: (data: any) => {
       console.log(data);
       // this.cancelar();
-      console.log(`Paciente ${this.formulario2.value.id} editado correctamente`);
+      console.log(`Paciente ${this.formulario2.value.paciente.paciente} editado correctamente`);
       // this.pacientesService.getAllPacientes().subscribe({
       //   next: (datos:any)=>{
       //   console.log(datos, "datos");
@@ -56,12 +56,7 @@ editarPaciente() {
     });
 
   }
-//     error: (error) => {
-//       console.log(`Error al editar el paciente ${this.formulario2.value.id}: ${error}`);
-//     }
-//   });
 
-// }
 cancelar(): void {
   this.dialogRef.close();
 }
