@@ -25,19 +25,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
-import es from '@angular/common/locales/es';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './views/login/login.component';
 import { sharedModule } from './shared/shadedModule';
-import { DashboardModule } from './views/dashboard/dashboard.module';
 import { RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
 import HomeAdminComponent from './views/home-admin/home-admin.component';
@@ -46,7 +41,7 @@ import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component'
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { DatosPacienteComponent } from './views/dashboard/full-calendar/datos-paciente.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
-import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
@@ -61,6 +56,7 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart/pie-chart.compon
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/doughnut-chart.component';
 import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 registerLocaleData(es);
 @NgModule({
