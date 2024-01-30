@@ -2,58 +2,61 @@
   <h1 class="text-center textH1 flex-grow-1 ms-2 mt-2">Listado de Citas</h1>
 
   <div class="d-flex align-items-center mt-2 ml2 me-2">
-
     <!-- FILTRO -->
     <mat-form-field>
       <mat-label>Filtro</mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
+      <input matInput (keyup)="applyFilter($event)" #input autocomplete="off" />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" class="ms-2 mb-2 float-end" (click)="openDialog()">
-      <mat-icon>
-        today
-      </mat-icon>
+    <button
+      mat-raised-button
+      color="primary"
+      class="ms-2 mb-2 float-end"
+      (click)="openDialog()"
+    >
+      <mat-icon> today </mat-icon>
       Agendar Cita
     </button>
-
   </div>
 
   <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
-
     <ng-container matColumnDef="fecha">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Fecha
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fecha | date: " dd/MM/yyyy"}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.fecha | date : " dd/MM/yyyy" }}</mat-cell
+      >
     </ng-container>
-
 
     <ng-container matColumnDef="hora">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Hora
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.fecha | date: "h:mm a"}}</mat-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element.fecha | date : "h:mm a" }}</mat-cell
+      >
     </ng-container>
 
     <ng-container matColumnDef="paciente">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Paciente
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id_paciente}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.id_paciente }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="id_medico">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Medico
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.id_medico}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.id_medico }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="tratamiento">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Tratamiento
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.tratamiento }} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{ element.tratamiento }} </mat-cell>
     </ng-container>
     <!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
 
@@ -63,7 +66,7 @@
       </mat-header-cell>
       <mat-cell *matCellDef="let element">
         <div [ngStyle]="getEstadoCellStyle(element.estado)" class="p-1">
-          {{element.estado}}
+          {{ element.estado }}
         </div>
       </mat-cell>
     </ng-container>
@@ -72,26 +75,40 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Acciones
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.acciones}}
-        <mat-icon type="button" class="btn__form ms-2 me-2" matTooltip="Formulario"
-          (click)="abrirFormularioDialog(element.id_paciente)"> feed</mat-icon>
-        <mat-icon type="button" class="btn__delete me-2 " matTooltip="Borrar"> delete </mat-icon>
-        <mat-icon type="button" class="btn__edit ms-2 " matTooltip="Editar"> edit </mat-icon>
+      <mat-cell *matCellDef="let element">
+        {{ element.acciones }}
+        <mat-icon
+          type="button"
+          class="btn__form ms-2 me-2"
+          matTooltip="Formulario"
+          (click)="abrirFormularioDialog(element.id_paciente)"
+        >
+          feed</mat-icon
+        >
+        <mat-icon type="button" class="btn__delete me-2" matTooltip="Borrar">
+          delete
+        </mat-icon>
+        <mat-icon type="button" class="btn__edit ms-2" matTooltip="Editar">
+          edit
+        </mat-icon>
       </mat-cell>
     </ng-container>
 
-
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 
     <!-- Row shown when there is no matching data. -->
     <tr class="mat-row" *matNoDataRow>
-      <td class="mat-cell" colspan="4">Ningun dato coincide con el filtro "{{input.value}}"</td>
+      <td class="mat-cell" colspan="4">
+        Ningun dato coincide con el filtro "{{ input.value }}"
+      </td>
     </tr>
-
   </mat-table>
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users" showFirstLastButtons></mat-paginator>
-
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="Select page of users"
+    showFirstLastButtons
+  ></mat-paginator>
 </mat-card>
 
 <!-- <app-historial [IdPaciente]="idCurrentPatient"></app-historial> -->

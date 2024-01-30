@@ -42,7 +42,11 @@ export class DatosPacienteComponent implements OnInit {
     titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }, // formato personalizado
   };
 
-  constructor(public dialog: MatDialog, private citasService: CitasService, private cdr: ChangeDetectorRef) {
+  constructor(
+    public dialog: MatDialog,
+    private citasService: CitasService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.getCitas();
   }
 
@@ -98,7 +102,9 @@ export class DatosPacienteComponent implements OnInit {
     console.log('Citas obtenidas:', result);
 
     for (let index = 0; index < result.length; index++) {
-      const fechaFormateada = moment(result[index].fecha).format('YYYY-MM-DDTHH:mm:ss');
+      const fechaFormateada = moment(result[index].fecha).format(
+        'YYYY-MM-DDTHH:mm:ss'
+      );
 
       const event = {
         id: createEventId(),
@@ -117,10 +123,10 @@ export class DatosPacienteComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateCitaComponent, {
       width: '950px', // ajusta el ancho según tus necesidades
-      data: {} // puedes pasar datos al diálogo si es necesario
+      data: {}, // puedes pasar datos al diálogo si es necesario
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('El diálogo se cerró', result);
       // Puedes realizar acciones después de que se cierre el diálogo si es necesario
     });

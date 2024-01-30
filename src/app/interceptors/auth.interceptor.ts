@@ -9,10 +9,11 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(
     request: HttpRequest<unknown>,
@@ -28,10 +29,11 @@ export class AuthInterceptor implements HttpInterceptor {
     });
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
+        if (err.status === 401 && err.message === 'Token is invalid') {
           // Redireccionar aqui
+          this.router.navigate(['/login']);
           this.authService.removeToken();
-          window.location.reload();
+          // window.location.reload();
         }
         return throwError(() => err);
       })

@@ -12,19 +12,19 @@ import { StadisticsComponent } from './components/dashboard/stadistics/stadistic
 import { ListaCitasComponent } from './views/dashboard/lista-citas/lista-citas.component';
 
 const routes: Routes = [
-
   {
-    path: '' ,//TODO: http://localhost:4200/ <--- /login
+    path: '', //TODO: http://localhost:4200/ <--- /login
     // loadChildren: ()=> import(`./modules/home/home.module`).then(m => m.HomeModule)
-    redirectTo: 'home', pathMatch: 'full'
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   {
-    path: 'login' ,//TODO: http://localhost:4200/ <--- /login
+    path: 'login', //TODO: http://localhost:4200/ <--- /login
     component: LoginComponent,
   },
   {
-    path: 'home' ,//TODO: http://localhost:4200/ <--- /home
-    component: HomeAdminComponent
+    path: 'home', //TODO: http://localhost:4200/ <--- /home
+    component: HomeAdminComponent,
   },
   // {
   //   path: '**' ,//TODO: cualquier ruta redirijirá al home
@@ -35,46 +35,43 @@ const routes: Routes = [
   //   loadChildren: ()=> import(`./modules/dashboard/dashboard.module`).then(m => m.DashboardModule)
   // },
   {
-    path: 'dashboard' ,//TODO: http://localhost:4200/ <--- /home
+    path: 'dashboard', //TODO: http://localhost:4200/ <--- /home
     component: DashboardComponent,
-    children:[
+    children: [
       {
-        path:'' ,
+        path: '',
         component: StadisticsComponent,
       },
       {
-        path:'doctores' ,
+        path: 'doctores',
         component: DoctoresComponent,
       },
       {
-        path:'pacientes' ,
+        path: 'pacientes',
         component: PacientesComponent,
       },
+      // {
+      //   path: 'datos-del-paciente',
+      //   component: DatosPacienteComponent,
+      // },
       {
-        path:'datos-del-paciente' ,
-        component: DatosPacienteComponent,
-      },
-      {
-        path:'crear-paciente' ,
+        path: 'crear-paciente',
         component: CreaPacienteComponent,
       },
       {
-        path:'lista-citas' ,
-        component: ListaCitasComponent,
+        path: 'lista-citas',
+        component: DatosPacienteComponent,
       },
       {
-        path:'historial' ,
+        path: 'historial',
         component: HistorialComponent,
-      
       },
-
-    ]
-  }
-
-]
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { useHash: true })],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
