@@ -34,7 +34,6 @@ export class MedicosService {
       'accept': 'application/json',
     })
     const body = {
-      id_medico: doctor.id_medico,
       nom_medico: doctor.nom_medico,
       ape_medico: doctor.ape_medico,
       tip_docum: doctor.tip_docum,
@@ -46,9 +45,9 @@ export class MedicosService {
 
     console.log("BODY DOCTOR 45: ", body );
     
-    console.log("RUTAAA",environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id_medico}`, body,{headers});
+    console.log("RUTAAA",environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id}`, body,{headers});
     
-    return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id_medico}`, body,{headers});
+    return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id}`, body,{headers});
     
   }
 

@@ -11,6 +11,7 @@ export interface Tratamiento {
   Kg: number;
   CinCad: string;
   Ejercicio: string;
+
 }
 
 @Component({
@@ -25,12 +26,12 @@ export class HistorialComponent implements OnChanges {
 
   tratamientos: Tratamiento[] = [
     { Tratamiento: 'botox', Fecha: '01-11-2024', TA: 120, Fc: 80, Kg: 70, CinCad: 'Cin', Ejercicio: 'Sí' },
-    { Tratamiento: 'filler', Fecha: '05-11-2024', TA: 120, Fc: 80, Kg: 70, CinCad: 'Cin', Ejercicio: 'Sí' },
-    { Tratamiento: 'laser', Fecha: '09-11-2024', TA: 120, Fc: 80, Kg: 70, CinCad: 'Cin', Ejercicio: 'Sí' },
+    { Tratamiento: 'filler', Fecha: '05-11-2024', TA: 120, Fc: 80, Kg: 70, CinCad: 'Cin', Ejercicio: 'Sí'},
+    { Tratamiento: 'laser', Fecha: '09-11-2024', TA: 120, Fc: 80, Kg: 70, CinCad: 'Cin', Ejercicio: 'Sí'},
     // Agrega más datos según sea necesario
   ];
 
-  displayedColumns: string[] = ['Tratamiento', 'Fecha', 'TA', 'Fc', 'Kg', 'CinCad', 'Ejercicio'];
+  displayedColumns: string[] = ['Tratamiento', 'Fecha', 'TA', 'Fc', 'Kg', 'CinCad', 'Ejercicio', 'Acciones'];
 
   constructor(public dialog: MatDialog, private pacienteService: PacientesService){}
 ngOnChanges(changes: SimpleChanges): void {
@@ -51,8 +52,36 @@ ngOnChanges(changes: SimpleChanges): void {
       });
     });
   }
+  detalleConsultaVisible = false;
+  detallesConsultaSeleccionada: any; // Puedes definir la estructura según tus datos
 
+  // ...
 
+  mostrarDetalles(element: any) {
+      // Aquí puedes realizar lógica para obtener los detalles de la consulta según la fila seleccionada
+      // Puedes asignar el resultado a this.detallesConsultaSeleccionada
+
+      // Por ejemplo:
+      this.detallesConsultaSeleccionada = this.obtenerDetallesConsulta(element.id);
+
+      // Luego, haces visible la sección de detalles
+      this.detalleConsultaVisible = true;
+  }
+
+  // Puedes implementar la función obtenerDetallesConsulta según tu lógica
+  obtenerDetallesConsulta(id: number): any {
+      // Lógica para obtener los detalles de la consulta
+      // Retorna un objeto con los detalles
+      // Puedes hacer una llamada a tu servicio o manipular directamente tus datos
+      return {
+          // Detalles de la consulta
+      };
+  }
+ // Función para volver al historial
+ volverAlHistorial() {
+  // Oculta el detalle y muestra el historial
+  this.detalleConsultaVisible = false;
+}
 
 }
 

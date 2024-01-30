@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms'
 import { PacientesService } from '../../../services/pacientes/pacientes.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -20,26 +21,19 @@ Validators.required,
 Validators.minLength(5),
 Validators.maxLength(60),
 ]],
+edad:[],
 appointment: [new Date()],
 genderType: [''],
-edad:[],
-symptoms: ['', [Validators.required, Validators.minLength(3)]],
-signs: ['', [Validators.required, Validators.minLength(3)]],
-psique: ['', [Validators.required, Validators.minLength(3)]],
-TpAnt: ['', [Validators.required, Validators.minLength(3)]],
-Fcos: ['', [Validators.required, Validators.minLength(3)]],
-OS:[],
-diag:[],
-DNI:[],
-Domicilio:[],
-Tel:[],
+IdTipoDocumento: [''],
+NumeroDocumento: [''],
+Cel:[],
+Email:[''],
 FNac:[],
 Hijos:[],
+Domicilio:[''],
 Ocupac:[],
-Cel:[],
 Gpo:[],
 EC:[],
-Consulta:[],
 alergias:[],
 MEN:[],
 SÑO:[],
@@ -50,29 +44,15 @@ AntFam:[],
 ANS:[],
 CIG:[],
 AntPers:[],
-EST:[],
-PesoKG:[],
-BMI:[],
-Diag:[],
-PT:[],
-KG:[],
-DES:[],
-MM:[],
-ALM:[],
-LON:[],
-CEN:[],
-FDS:[],
-Dlk:[],
-Like:[],
-Tratamientos:[],
-
 })
 
 
 
-constructor(private fb: FormBuilder, private pacientesService: PacientesService){
-
-}
+constructor(
+  private fb: FormBuilder, 
+  private pacientesService: PacientesService,
+  public dialogRef: MatDialogRef<CreaPacienteComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any){}
 
 crearPacienteNuevo(){
   if(this.form.valid){
@@ -112,6 +92,10 @@ get nombrePaciente(){
       this.form.get(controlName)?.markAsUntouched();
     });
   }
+  cancelar(): void {
+    this.dialogRef.close();
+  }
+
 }
 
 

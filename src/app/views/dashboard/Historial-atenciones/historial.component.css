@@ -29,4 +29,6 @@
   .mat-cell {
     min-width: auto;
   }
-
+  .ocultar-historial {
+    display: none;
+  }

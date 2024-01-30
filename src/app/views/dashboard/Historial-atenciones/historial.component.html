@@ -1,0 +1,48 @@
+<!-- <h6>ID PACIENTE</h6>{{IdPaciente}} -->
+<mat-card>
+    <div class="d-flex align-items-center mt-2 ml2 ms-2 me-2">
+
+        <h1 class="text-left textH1 flex-grow-1">Historico de Atenciones</h1>
+
+
+        <button mat-raised-button color="primary" class="ms-2 mb-2 float-end" (click)="openDialog()">
+            <mat-icon>add</mat-icon>
+            Agendar Cita
+        </button>
+    </div>
+
+<table  mat-table [dataSource]="tratamientos" class="mat-elevation-z8" [ngClass]="{'ocultar-historial': detalleConsultaVisible}">
+ <!-- Tabla de Atenciones -->
+ <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <!-- Verifica si la columna es 'Acciones' para incluir el ícono -->
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="column !== 'Acciones'">
+        {{ element[column] }}
+      </ng-container>
+      <ng-container *ngIf="column === 'Acciones'">
+        <!-- Aquí puedes agregar tu mat-icon para la columna 'Acciones' -->
+        <button mat-icon-button (click)="mostrarDetalles(element)" >
+          <mat-icon>search</mat-icon>
+        </button>
+      </ng-container>
+    </td>
+  </ng-container>
+  
+<!-- Encabezado de la tabla -->
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<!-- Cada fila de la tabla -->
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+   
+
+</mat-card>
+
+<!-- Detalles de la consulta seleccionada -->
+<div *ngIf="detalleConsultaVisible" style="background-color: red;">
+    <h1>hola aquí iran los demás detalles de la cita de esa fecha pasada</h1>
+    <!-- Aquí puedes mostrar los detalles de la consulta seleccionada -->
+    <!-- Puedes usar un ngFor para mostrar detalles específicos de la consulta -->
+    <button mat-button (click)="volverAlHistorial()">Volver al historial</button>
+</div>

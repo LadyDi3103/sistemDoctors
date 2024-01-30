@@ -8,6 +8,8 @@ import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EditModalComponent } from '../edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
+import { CreaPacienteComponent } from '../crea-paciente/crea-paciente.component';
+import { DetalleHistorialComponent } from '../detalle-historia/detalle-historial-component';
 
 
 
@@ -41,9 +43,9 @@ interface TransforPaciente{
   styleUrls: ['./pacientes.component.css']
 })
 export class PacientesComponent implements AfterViewInit, OnInit {
-  // paciente: Paciente = [];
+
   idCurrentPatient = 0;
-  displayedColumns: string[] = ['paciente', 'NumeroDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
+  displayedColumns: string[] = ['paciente', 'IdTipoDocumento', 'Num_Cel', 'FNac', 'Email', 'Domicilio', 'acciones'];
   dataSource = new MatTableDataSource<Paciente>();
   // dataSource = new MatTableDataSource();
   
@@ -59,13 +61,13 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     email: new FormControl(''),
     id: new FormControl(''),
     NombrePaciente: new FormControl(''),
-    dni: new FormControl(''),
+    IdTipoDocumento: new FormControl(''),
+    NumeroDocumento: new FormControl(''),
     Telefono: new FormControl(),
     Direccion: new FormControl(''),
   });
 
   constructor(
-    // private _liveAnnouncer: LiveAnnouncer,
     private pacientesService: PacientesService,
     private dialog: MatDialog,
   ) {}
@@ -77,10 +79,7 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     this.dataSource.sort= this.sort;
     this.dataSource.paginator = this.paginator;
   }
-  // announceSortChange(sortState: Sort): void {
-  //   const direction = sortState.direction ? `${sortState.direction}ending` : 'cleared';
-  //   this._liveAnnouncer.announce(`Sorted ${direction}`);
-  // }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -90,18 +89,6 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     }
   }
 
-
-  // consultarPacientes() {
-  //   this.pacientesService.getAllPacientes().subscribe({
-  //     next: (data: any) => {
-  //       this.dataSource.data = data;
-  //       console.log(this.dataSource.data);
-  //     },
-  //     error: (error) => {
-  //       console.log(error);
-  //     }
-  //   });
-  // }
 
   consultarPacientes() {
     this.pacientesService.getAllPacientes().subscribe({
@@ -121,7 +108,69 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     });
   }
   
-
+  crearUnPaciente():void{
+    const dialogRef = this.dialog.open(CreaPacienteComponent, {
+      width: '950px',
+      data :{
+        paciente: ' ',
+        edad: ' ',
+        appointment: ' ',
+        genderType: ' ',
+        IdTipoDocumento: ' ',
+        NumeroDocumento: ' ',
+        Num_Cel: ' ',
+        Email: ' ',
+        FNac: ' ',
+        Hijos: ' ',
+        Domicilio: ' ',
+        Ocupac: ' ',
+        Gpo: ' ',
+        EC: ' ',
+        alergias: ' ',
+        MEN: ' ',
+        SÑO: ' ',
+        Cirugias: ' ',
+        CPO: ' ',
+        NOC: ' ',
+        AntFam: ' ',
+        ANS: ' ',
+        CIG: ' ',
+        AntPer: ' '
+      }
+    });
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if(result){
+        this.pacientesService.crearPaciente(result).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            console.log(`Paciente ${data.paciente} creado correctamente`);
+            this.consultarPacientes();
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: `Paciente ${result.paciente} creado exitosamente`,
+              showConfirmButton: false,
+              timer: 1500
+            });
+          },
+          error: (error) => {
+            console.log(`Error al crear el paciente ${result.nom_medico}: $error}`);
+          }
+        })
+      }
+      console.log('El diálogo fue cerrado');
+      console.log(result);
+    });
+  }
+  mostrarDetalleHistorial(pacienteId: string) {
+    this.pacientesService.getPacienteById(pacienteId)
+      .subscribe((detalleHistorial) => {
+        this.dialog.open(DetalleHistorialComponent, {
+          data: { detalleHistorial },
+          width: '950px', 
+        });
+      });
+  }
 
   openModalToEditPaciente(paciente: any) {
     console.log(paciente, "paciente EDITAR PACIENTES.COMPONENT")
@@ -210,3 +259,30 @@ export class PacientesComponent implements AfterViewInit, OnInit {
     
 
 }
+
+    // paciente: ' ',
+    // edad: ' ',
+    // appointment: ' ',
+    // genderType: ' ',
+    // IdTipoDocumento: ' ',
+    // NumeroDocumento: ' ',
+    // Num_Cel: ' ',
+    // Email: ' ',
+    // FNac: ' ',
+    // Hijos: ' ',
+    // symptoms: ' ',
+    // signs: ' ',
+    // Domicilio: ' ',
+    // Ocupac: ' ',
+    // Gpo: ' ',
+    // EC: ' ',
+    // alergias: ' ',
+    // MEN: ' ',
+    // SÑO: ' ',
+    // Cirugias: ' ',
+    // CPO: ' ',
+    // NOC: ' ',
+    // AntFam: ' ',
+    // ANS: ' ',
+    // CIG: ' ',
+    // AntPer: ' '

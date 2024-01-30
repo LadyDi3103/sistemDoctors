@@ -1,0 +1,5 @@
+/* Estilo para el botón OK con la clase celeste-button */
+.celeste-button {
+    background-color: #00a1e0; /* Cambia el color a celeste según tu preferencia */
+    color: #219ae5; /* Cambia el color del texto si es necesario para que sea legible */
+}
