@@ -2,7 +2,7 @@ import { LOCALE_ID, NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,7 +13,10 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import {
+  MatPaginatorModule,
+  MatPaginatorIntl,
+} from '@angular/material/paginator';
 
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -25,8 +28,8 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSliderModule } from '@angular/material/slider';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -42,12 +45,10 @@ import { DatosPacienteComponent } from './views/dashboard/datosPaciente/datos-pa
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
 
-
 import { DashboardModule } from './views/dashboard/dashboard.module';
 
-
 // idioma
-import es from '@angular/common/locales/es'
+import es from '@angular/common/locales/es';
 import { CustomMatPaginatorIntl } from './utils/custom-mat-paginator-intl';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { CreateCitaComponent } from './components/create-cita/create-cita/create-cita.component';
@@ -57,8 +58,9 @@ import { MyLineChartComponent } from './charts/my-line-chart/my-line-chart.compo
 import { PieChartComponent } from './charts/pie-chart/pie-chart/pie-chart.component';
 import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/doughnut-chart.component';
 import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
-registerLocaleData(es)
+registerLocaleData(es);
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,8 +76,7 @@ registerLocaleData(es)
     MyLineChartComponent,
     PieChartComponent,
     DoughnutChartComponent,
-    BarChartComponent
-
+    BarChartComponent,
   ],
   imports: [
     NgChartsModule,
@@ -113,11 +114,12 @@ registerLocaleData(es)
     MatGridListModule,
     MatFormFieldModule,
     MatDialogModule,
-  DashboardModule,
-  NgChartsModule, 
-
+    DashboardModule,
+    NgChartsModule,
   ],
-  providers: [    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl }
+  providers: [
+    { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
