@@ -20,7 +20,7 @@ import {
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatStepperModule } from '@angular/material/stepper';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -57,6 +57,7 @@ import { DoughnutChartComponent } from './charts/doughnut-chart/doughnut-chart/d
 import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogRef } from '@angular/material/dialog';
 
 registerLocaleData(es);
 @NgModule({
@@ -111,11 +112,13 @@ registerLocaleData(es);
     MatNativeDateModule,
     MatGridListModule,
     MatFormFieldModule,
-    MatDialogModule,
     DashboardModule,
     NgChartsModule,
   ],
   providers: [
+    // { provide: MatDialogRef, useValue: {} },
+    // { provide: MAT_DIALOG_DATA, useValue: {} }, // Proporciona un valor ficticio para MatMdcDialogData
+
     { provide: MatPaginatorIntl, useClass: CustomMatPaginatorIntl },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

@@ -19,11 +19,19 @@ export interface Citas {
 @Component({
   selector: 'app-lista-citas',
   templateUrl: './lista-citas.component.html',
-  styleUrls: ['./lista-citas.component.css']
+  styleUrls: ['./lista-citas.component.css'],
 })
 export class ListaCitasComponent implements AfterViewInit, OnInit {
   estadoSeleccionado: string = '';
-  displayedColumns: string[] = ['fecha', 'hora', 'paciente', 'id_medico', 'tratamiento', 'estado', 'acciones'];
+  displayedColumns: string[] = [
+    'fecha',
+    'hora',
+    'paciente',
+    'id_medico',
+    'tratamiento',
+    'estado',
+    'acciones',
+  ];
   dataSource = new MatTableDataSource<Citas>();
   estados: string[] = ['PENDIENTE', 'CANCELADO', 'CONFIRMADO'];
 
@@ -33,7 +41,7 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
   constructor(
     private dialogService: DialogService,
     private citasService: CitasService,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -64,9 +72,8 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
       },
       error: (error) => {
         console.error('Error al consultar citas:', error);
-      }
+      },
     });
-
   }
 
   abrirFormularioDialog(idPaciente: number) {
@@ -83,7 +90,9 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
   }
 
   cambiarEstado(idPaciente: number, nuevoEstado: string) {
-    console.log(`Se cambió el estado del paciente con ID ${idPaciente} a ${nuevoEstado}`);
+    console.log(
+      `Se cambió el estado del paciente con ID ${idPaciente} a ${nuevoEstado}`
+    );
   }
 
   getEstadoCellStyle(estado: string): { [key: string]: string } {
@@ -106,10 +115,12 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreateCitaComponent, {
       width: '950px',
-      data: {}
+      data: {
+        /* tus datos aquí */
+      },
     });
-  
-    dialogRef.afterClosed().subscribe(result => {
+
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('El diálogo se cerró', result);
       // Puedes realizar acciones después de que se cierre el diálogo si es necesario
     });

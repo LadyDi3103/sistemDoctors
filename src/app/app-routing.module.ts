@@ -50,17 +50,17 @@ const routes: Routes = [
         path: 'pacientes',
         component: PacientesComponent,
       },
-      // {
-      //   path: 'datos-del-paciente',
-      //   component: DatosPacienteComponent,
-      // },
+      {
+        path: 'datos-del-paciente',
+        component: DatosPacienteComponent,
+      },
       {
         path: 'crear-paciente',
         component: CreaPacienteComponent,
       },
       {
         path: 'lista-citas',
-        component: DatosPacienteComponent,
+        component: ListaCitasComponent,
       },
       {
         path: 'historial',
