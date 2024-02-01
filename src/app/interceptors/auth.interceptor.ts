@@ -29,10 +29,16 @@ export class AuthInterceptor implements HttpInterceptor {
     });
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401 && err.message === 'Token is invalid') {
+        if (
+          err.status === 401 ||
+          err.status === 500 ||
+          err.status === 0 ||
+          err.message === 'Token is invalid'
+        ) {
           // Redireccionar aqui
           this.router.navigate(['/login']);
           this.authService.removeToken();
+          this.authService.setAuthenticated(false);
           // window.location.reload();
         }
         return throwError(() => err);
