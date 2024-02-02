@@ -4,35 +4,38 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { of } from 'rxjs'; // Asegúrate de importar 'of' de 'rxjs'
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MedicosService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) { }
-
-  crearMedico(datos: any): Observable<any>{
+  crearMedico(datos: any): Observable<any> {
     const headers = new HttpHeaders({
-      'accept': 'application/json',
-    })
-    return this.httpClient.post(environment.BASE_URL_BACK+environment.URL_ENDPOINT_MEDICOS, datos, {headers} );
-    }
+      accept: 'application/json',
+    });
+    return this.httpClient.post(
+      environment.BASE_URL_BACK + '/medicos/createMedico',
+      datos,
+      { headers }
+    );
+  }
 
   // Método get para traernos a todos los médicos
-  getAllMedicos():Observable<any>{
+  getAllMedicos(): Observable<any> {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),
     };
-    return this.httpClient.get(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS);
+    return this.httpClient.get(environment.BASE_URL_BACK + '/medicos');
   }
 
   editarMedico(doctor: any): Observable<any> {
-    console.log("MEDICO SERVICE doctor",doctor);
-    
+    console.log('MEDICO SERVICE doctor', doctor);
+
     const headers = new HttpHeaders({
-      'accept': 'application/json',
-    })
+      accept: 'application/json',
+    });
     const body = {
       nom_medico: doctor.nom_medico,
       ape_medico: doctor.ape_medico,
@@ -43,24 +46,18 @@ export class MedicosService {
       direccion: doctor.direccion,
     };
 
-    console.log("BODY DOCTOR 45: ", body );
-    
-    console.log("RUTAAA",environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id}`, body,{headers});
-    
-    return this.httpClient.patch<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_MEDICOS+`/${doctor.id}`, body,{headers});
-    
+    console.log('BODY DOCTOR 45: ', body);
+
+    return this.httpClient.patch<any>(
+      environment.BASE_URL_BACK + `/medicos/editMedico/${doctor.id}`,
+      body,
+      { headers }
+    );
   }
 
-  eliminarMedico(doctor: any): Observable<any> {
-    if(doctor){
-      const body = {
-        tipDocum: doctor.tip_docum,
-        codDocum: doctor.cod_docum,
-      };
-      return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_ELIMINAR_MEDICO,body);
-    } else{
-      console.error('El objeto doctor es undefined');
-      return of(null);
-    }  
+  eliminarMedico(id: number): Observable<any> {
+    return this.httpClient.delete<any>(
+      environment.BASE_URL_BACK + `/medicos/deleteMedico/${id}`
+    );
   }
 }
