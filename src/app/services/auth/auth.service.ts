@@ -10,9 +10,7 @@ export class AuthService {
   private isAuthenticatedSubject: BehaviorSubject<Boolean> =
     new BehaviorSubject<Boolean>(false);
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
-  private rolSubject: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(
-    false
-  );
+  private rolSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   rol$ = this.rolSubject.asObservable();
   constructor(private http: HttpClient, private router: Router) {}
   login(data: any) {
@@ -23,7 +21,6 @@ export class AuthService {
       .pipe(
         map((res: HttpResponse<any>) => {
           console.log(res, 'RES STATUS');
-
           if (res.status === 200) {
             console.log('ENTRA');
             const body = res.body;
@@ -48,6 +45,9 @@ export class AuthService {
     localStorage.removeItem('token');
   }
   isAuthenticated() {
-    return !!this.getToken();
+    return !!this.isAuthenticatedSubject.value;
+  }
+  setAuthenticated(value: boolean) {
+    this.isAuthenticatedSubject.next(value);
   }
 }

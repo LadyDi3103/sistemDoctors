@@ -10,6 +10,8 @@ import { DoctoresComponent } from './views/dashboard/doctores/doctores.component
 import { DatosPacienteComponent } from './views/dashboard/full-calendar/datos-paciente.component';
 import { StadisticsComponent } from './components/dashboard/stadistics/stadistics.component';
 import { ListaCitasComponent } from './views/dashboard/lista-citas/lista-citas.component';
+import { authGuard } from './guards/auth/auth.guard';
+import { rolAuthGuard } from './guards/rolAuth/rol-auth.guard';
 
 const routes: Routes = [
   {
@@ -35,8 +37,14 @@ const routes: Routes = [
   //   loadChildren: ()=> import(`./modules/dashboard/dashboard.module`).then(m => m.DashboardModule)
   // },
   {
+    path: 'admin',
+    component: DashboardComponent,
+    canActivate: [authGuard, rolAuthGuard],
+  },
+  {
     path: 'dashboard', //TODO: http://localhost:4200/ <--- /home
     component: DashboardComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
