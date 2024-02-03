@@ -5,8 +5,4 @@
 export const environment = {
   // BASE_URL_BACK: 'https://sis-doctors-back.onrender.com',
   BASE_URL_BACK: 'http://localhost:3000',
-  URL_ENDPOINT_MEDICOS:'/medicos',
-  URL_ENDPOINT_ELIMINAR_MEDICO:'/eliminarMedico',
-  URL_ENDPOINT_PACIENTES:'/pacientes',
-  URL_ENDPOINT_ELIMINAR_PACIENTE: '/eliminarPaciente',
-}
+};
