@@ -11,7 +11,8 @@ import * as moment from 'moment';
 import esLocale from '@fullcalendar/core/locales/es';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateCitaComponent } from '../../../components/create-cita/create-cita/create-cita.component';
+import { CreateCitaComponent } from '../../components/create-cita/create-cita/create-cita.component';
+import { Citas } from '../dashboard/lista-citas/lista-citas.component';
 
 let eventGuid = 0;
 
@@ -22,11 +23,11 @@ export function createEventId() {
 export let INITIAL_EVENTS: EventInput[] = [];
 
 @Component({
-  selector: 'app-datos-paciente',
-  templateUrl: './datos-paciente.component.html',
-  styleUrls: ['./datos-paciente.component.css'],
+  selector: 'app-citas',
+  templateUrl: './citas.component.html',
+  styleUrls: ['./citas.component.css'],
 })
-export class DatosPacienteComponent implements OnInit {
+export class CitasComponent implements OnInit {
   edit = false;
 
   calendarOptions: CalendarOptions = {

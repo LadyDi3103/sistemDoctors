@@ -1,4 +1,4 @@
-<div class="container p-3">
+<div class="container__calendar p-3">
   <h1 style="font-size: 100px" *ngIf="edit">EDITANDO CITA</h1>
 
   <div class="d-flex justify-content-center align-items-center">
@@ -13,9 +13,10 @@
       <mat-icon>today</mat-icon>
       Agendar Cita
     </button>
+
   </div>
 
   <full-calendar [options]="calendarOptions"></full-calendar>
 </div>
 
-<app-create-cita></app-create-cita>
+<!-- <app-create-cita></app-create-cita> -->

@@ -68,7 +68,7 @@ export class PacientesService {
           tipDocum: paciente.IdTipoDocumento,
           codDocum: paciente.NumeroDocumento
         };
-        return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_ELIMINAR_PACIENTE,body);
+        return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.IdPaciente}`,body);
       } else{
         console.error('El objeto paciente es undefined');
         return of(null);

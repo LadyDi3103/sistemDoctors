@@ -5,14 +5,14 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { PacientesComponent } from './views/dashboard/Pacientes/pacientes.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
 import { HistorialComponent } from './views/dashboard/Historial-atenciones/historial.component';
-import HomeAdminComponent from './views/home-admin/home-admin.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
-import { DatosPacienteComponent } from './views/dashboard/full-calendar/datos-paciente.component';
+import { CitasComponent } from './views/citas/citas.component';
 import { StadisticsComponent } from './components/dashboard/stadistics/stadistics.component';
 import { ListaCitasComponent } from './views/dashboard/lista-citas/lista-citas.component';
 import { authGuard } from './guards/auth/auth.guard';
 import { rolAuthGuard } from './guards/rolAuth/rol-auth.guard';
-
+import { HomeComponent } from './views/home/home.component';
+import { HomeAdminComponent } from './views/home-admin/home-admin.component';
 const routes: Routes = [
   {
     path: '', //TODO: http://localhost:4200/ <--- /login
@@ -26,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'home', //TODO: http://localhost:4200/ <--- /home
-    component: HomeAdminComponent,
+    component: HomeComponent,
   },
   // {
   //   path: '**' ,//TODO: cualquier ruta redirijirá al home
@@ -37,8 +37,13 @@ const routes: Routes = [
   //   loadChildren: ()=> import(`./modules/dashboard/dashboard.module`).then(m => m.DashboardModule)
   // },
   {
-    path: 'admin',
-    component: DashboardComponent,
+    path: 'home-admin',
+    component: HomeAdminComponent,
+    canActivate: [authGuard, rolAuthGuard],
+  },
+  {
+    path: 'citas',
+    component: CitasComponent,
     canActivate: [authGuard, rolAuthGuard],
   },
   {
@@ -57,10 +62,6 @@ const routes: Routes = [
       {
         path: 'pacientes',
         component: PacientesComponent,
-      },
-      {
-        path: 'datos-del-paciente',
-        component: DatosPacienteComponent,
       },
       {
         path: 'crear-paciente',
@@ -82,4 +83,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

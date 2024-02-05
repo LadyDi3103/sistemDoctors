@@ -12,7 +12,7 @@ export class AuthService {
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
   private rolSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   rol$ = this.rolSubject.asObservable();
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) { }
   login(data: any) {
     return this.http
       .post(environment.BASE_URL_BACK + '/auth/login', data, {
@@ -28,7 +28,15 @@ export class AuthService {
             this.isAuthenticatedSubject.next(true);
             console.log(body.user.rol);
             this.rolSubject.next(body.user.rol);
-            this.router.navigate(['/dashboard']);
+  
+            // Redirigir según el rol del usuario
+            if (body.user.rol === 'medico') {
+              this.router.navigate(['/dashboard']);
+            } else if (body.user.rol === 'admin') {
+              this.router.navigate(['/home-admin']);
+            } else {
+              console.log('Rol desconocido, no se puede redirigir.');
+            }
           }
           return res;
         })

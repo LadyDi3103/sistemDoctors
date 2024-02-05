@@ -1,3 +1,4 @@
+
 <div class="main_container">
   <div class="container__sidebar">
     <mat-nav-list>
@@ -5,26 +6,36 @@
       <img class="sidebar__logo--img" src="../../../../assets/logos/snake-removebg-preview.png" alt="imagen de usuario">
     </div> -->
 
-      <a mat-list-item routerLink="/dashboard">
-        <div class="d-flex align-items-center">
-          <mat-icon>dashboard</mat-icon>
-          <span class="ms-2">Dashboard</span>
-        </div>
-      </a>
+    <a mat-list-item routerLink="/citas">
+      <div class="d-flex align-items-center">
+        <mat-icon>calendar_month</mat-icon>
+        <span class="ms-2">Citas</span>
+      </div>
+    </a>
 
-      <a mat-list-item routerLink="/dashboard/doctores">
-        <div class="d-flex align-items-center">
-          <mat-icon>medication</mat-icon>
-          <span class="ms-2">Doctores</span>
-        </div>
-      </a>
+    <a mat-list-item routerLink="/dashboard">
+      <div class="d-flex align-items-center">
+        <mat-icon>dashboard</mat-icon>
+        <span class="ms-2">Dashboard</span>
+      </div>
+    </a>
+    
+    <a mat-list-item routerLink="/dashboard/doctores">
+      <div class="d-flex align-items-center">
+        <mat-icon>medication</mat-icon>
+        <span class="ms-2">Doctores</span>
+      </div>
+    </a>
 
-      <a mat-list-item routerLink="/dashboard/pacientes">
-        <div class="d-flex align-items-center">
-          <mat-icon>account_circle</mat-icon>
-          <span class="ms-2">Pacientes</span>
-        </div>
-      </a>
+    <a mat-list-item routerLink="/dashboard/pacientes">
+      <div class="d-flex align-items-center">
+        <mat-icon>account_circle</mat-icon>
+        <span class="ms-2">Pacientes</span>
+      </div>
+    </a>
+
+
+
 
       <a mat-list-item routerLink="/dashboard/lista-citas">
         <div class="d-flex align-items-center">
@@ -33,12 +44,6 @@
         </div>
       </a>
 
-      <a mat-list-item routerLink="/dashboard/datos-del-paciente">
-        <div class="d-flex align-items-center">
-          <mat-icon>calendar_month</mat-icon>
-          <span class="ms-2">Citas Programadas</span>
-        </div>
-      </a>
 
       <!-- <a mat-list-item routerLink="/dashboard/crear-paciente">
         <div class="d-flex align-items-center">
@@ -70,7 +75,7 @@
     </mat-nav-list>
   </div>
 
-  <div class="bg-info w-100" style="width: 100vw">
+  <!-- <div class="w-100" style="width: 100vw">
     <router-outlet> </router-outlet>
-  </div>
+  </div> -->
 </div>

@@ -1,0 +1,128 @@
+.container-fluid {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-section {
+    display: flex;
+    flex: 1;
+    background: url('../../../assets/fondos/fondo-medical.png') center/cover no-repeat;
+    min-height: 92vh;
+}
+
+.img-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.description-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    padding: 0px;
+}
+
+.service-section {
+    min-height: 55vh;
+    border-radius: 5px;
+}
+
+.servicios-container {
+    flex: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.img-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    & img {
+        margin-top: 100px;
+        height: 80vh;
+        width: auto;
+    }
+}
+
+.description-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    padding: 0px;
+
+    & h1 {
+        font-size: 3em;
+        margin-bottom: 10px;
+        font-weight: 800;
+        color: #334085;
+    }
+
+    & h2 {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        font-weight: 400;
+        color: #3f51b5;
+    }
+}
+
+/* Ajustes adicionales para personalizar las cards de Angular Material */
+mat-card {
+    width: 300px;
+    margin: 15px;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+
+    &:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+
+    & img {
+        height: 180px;
+    }
+
+    & mat-card-header,
+    mat-card-content {
+        text-align: center;
+    }
+}
+
+.img-container,
+.description-container {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Responsive design */
+@media (max-width: 575.98px) {}
+
+@media (max-width: 767.98px) {
+    .description-container {
+        align-items: center;
+        padding: 20px 15px;
+    }
+
+    .img-container {
+        justify-content: center;
+    }
+
+    .welcome-section {
+        flex-direction: column-reverse;
+    }
+}
+
+@media (max-width: 991.98px) {}
+
+@media (max-width: 1199.98px) {}
+
+@media (max-width: 1399.98px) {}

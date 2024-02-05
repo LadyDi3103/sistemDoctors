@@ -35,11 +35,10 @@ import { LoginComponent } from './views/login/login.component';
 import { sharedModule } from './shared/shadedModule';
 import { RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
-import HomeAdminComponent from './views/home-admin/home-admin.component';
+
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { SideNavComponent } from './views/dashboard/side-nav/side-nav.component';
 import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
-import { DatosPacienteComponent } from './views/dashboard/full-calendar/datos-paciente.component';
+import { CitasComponent } from './views/citas/citas.component';
 import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -58,17 +57,17 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart/bar-chart.compon
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogRef } from '@angular/material/dialog';
+import { HomeComponent } from './views/home/home.component';
+import { HomeAdminComponent } from './views/home-admin/home-admin.component';
 
 registerLocaleData(es);
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeAdminComponent,
     DashboardComponent,
-    SideNavComponent,
     CreaPacienteComponent,
-    DatosPacienteComponent,
+    CitasComponent,
     DoctoresComponent,
     CreateCitaComponent,
     StadisticsComponent,
@@ -76,6 +75,8 @@ registerLocaleData(es);
     PieChartComponent,
     DoughnutChartComponent,
     BarChartComponent,
+    HomeComponent,
+    HomeAdminComponent,
   ],
   imports: [
     NgChartsModule,
