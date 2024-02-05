@@ -6,8 +6,8 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CreateDoctorModalComponent } from '../create-doctor-modal/create-doctor-modal.component';
-import { EditDoctorModalComponent } from '../edit-doctor-modal/edit-doctor-modal.component';
+import { CreateDoctorModalComponent } from './create-doctor-modal/create-doctor-modal.component';
+import { EditDoctorModalComponent } from './edit-doctor-modal/edit-doctor-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
 
 // INTERFACE PARA EL TABLE-HEAD
@@ -97,7 +97,7 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
           nom_medico: '',
           ape_medico: '',
           tip_docum: '',
-          cod_docum: '',
+          num_docum: '',
           celular: '',
           email: '',
           direccion: ''

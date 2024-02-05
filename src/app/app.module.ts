@@ -37,9 +37,9 @@ import { RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
 
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { CreaPacienteComponent } from './views/dashboard/crea-paciente/crea-paciente.component';
+import { CreaPacienteComponent } from './views/Pacientes/crea-paciente/crea-paciente.component';
 import { CitasComponent } from './views/citas/citas.component';
-import { DoctoresComponent } from './views/dashboard/doctores/doctores.component';
+import { DoctoresComponent } from './views/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { DashboardModule } from './views/dashboard/dashboard.module';

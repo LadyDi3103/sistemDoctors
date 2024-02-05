@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { DataUserEdit } from '../../interfaces/interfaces';
 import { of } from 'rxjs'; // Asegúrate de importar 'of' de 'rxjs'
-import { Paciente } from '../../views/dashboard/Pacientes/pacientes.component';
+import { Paciente } from '../../views/Pacientes/pacientes.component';
 
 @Injectable({
   providedIn: 'root'

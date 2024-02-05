@@ -26,7 +26,7 @@ export class CreaPacienteComponent implements OnInit {
     }
   initializeForm() {
     const currentDate = new Date();
-    const formattedDate = formatDate(currentDate, 'dd/MM/yyyy', 'en-US');
+    const formattedDate = formatDate(currentDate, 'dd/MM/yyyy', 'es-PE');
 
     this.form = this.fb.group({
       paciente: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(60)]],
@@ -34,8 +34,8 @@ export class CreaPacienteComponent implements OnInit {
       appointment: [formattedDate, Validators.required],
       genderType: [''],
       IdTipoDocumento: [''],
-      NumeroDocumento: [''],
-      Cel: [],
+      num_Documento: [''],
+      num_Cel: [],
       Email: [''],
       FNac: [],
       Hijos: [],
