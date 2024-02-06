@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { SideNavComponent } from './shared-components/side-nav/side-nav.component';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './shared-components/footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
 declarations: [ 
@@ -26,7 +27,7 @@ imports: [
     MatInputModule,
     ReactiveFormsModule,
     MatListModule,
-   
+   RouterModule,
 ],
 exports: [
 HeaderComponent,

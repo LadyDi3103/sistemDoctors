@@ -41,11 +41,7 @@ const routes: Routes = [
     component: HomeAdminComponent,
     canActivate: [authGuard, rolAuthGuard],
   },
-  {
-    path: 'citas',
-    component: CitasComponent,
-    canActivate: [authGuard, rolAuthGuard],
-  },
+
   {
     path: 'dashboard', //TODO: http://localhost:4200/ <--- /home
     component: DashboardComponent,
@@ -54,6 +50,10 @@ const routes: Routes = [
       {
         path: '',
         component: StadisticsComponent,
+      },
+      {
+        path: 'citas',
+        component: CitasComponent,
       },
       {
         path: 'doctores',
