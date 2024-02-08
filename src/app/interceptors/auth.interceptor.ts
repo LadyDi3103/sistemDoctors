@@ -10,6 +10,7 @@ import {
 import { Observable, catchError, throwError } from 'rxjs';
 import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -27,19 +28,39 @@ export class AuthInterceptor implements HttpInterceptor {
     request = request.clone({
       headers: headers,
     });
+
     return next.handle(request).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (
-          err.status === 401 ||
-          err.status === 500 ||
-          err.status === 0 ||
-          err.message === 'Token is invalid'
-        ) {
-          // Redireccionar aqui
+        if (err.status === 401 && err.error === 'Unauthorized') {
+          Swal.fire({
+            title: 'Token expired',
+            text: 'Su sesión expiró, vuelve a iniciar sesión',
+            icon: 'warning',
+          });
+          console.log(err, 'ERRORORROROROROROR');
           this.router.navigate(['/login']);
           this.authService.removeToken();
           this.authService.setAuthenticated(false);
-          // window.location.reload();
+        } else if (
+          err.status === 403 &&
+          err.error ===
+            'Acceso denegado. Se requieren privilegios de administrador.'
+        ) {
+          Swal.fire({
+            title: 'Acceso denegado',
+            text: 'No tienes privilegios de administrador',
+            icon: 'warning',
+          });
+          console.log(err, 'ERRORORROROROROROROR');
+          this.router.navigate(['/login']);
+          this.authService.removeToken();
+          this.authService.setAuthenticated(false);
+        } else if (err.status === 500) {
+          Swal.fire({
+            title: 'Error',
+            text: 'Error en el servidor, vuelve a intentarlo',
+            icon: 'error',
+          });
         }
         return throwError(() => err);
       })

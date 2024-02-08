@@ -1,4 +1,4 @@
-import { HttpClient, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map } from 'rxjs';
@@ -57,8 +57,8 @@ export class AuthService {
             const body = res.body;
             localStorage.setItem('token', body.token);
             this.isAuthenticatedSubject.next(true);
-          
-            this.rolSubject.next(body.user.rol);
+
+            this.rolSubject.next(body.user.role_name);
 
             // Redirigir según el rol del usuario
             if (body.user.role_id === 1) {
@@ -71,8 +71,19 @@ export class AuthService {
         })
       );
   }
+  verifyToken() {
+    return this.http.get(environment.BASE_URL_BACK + '/verifyToken', {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer' + localStorage.getItem('token'),
+      }),
+    });
+  }
   getToken() {
     return localStorage.getItem('token');
+  }
+  setRole(role: string) {
+    this.rolSubject.next(role);
   }
   setToken(token: string) {
     localStorage.setItem('token', token);
