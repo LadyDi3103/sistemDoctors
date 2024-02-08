@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
           if (res.status === 'success' && res.message === 'Token valido') {
             this.authService.setAuthenticated(true);
             this.authService.setRole(res.role_name);
+            this.router.navigate(['/dashboard']);
           }
         },
         error: (error) => {
