@@ -68,7 +68,7 @@
         Acciones
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.acciones}}
-        <mat-icon type="button" class="btn__details ms-2 me-2" (click)="mostrarDetalleHistorial(element.IdPaciente)"  matTooltip="Detalle" (click)="setCurrentPatient(element.IdPaciente)"> search</mat-icon>
+        <mat-icon type="button" class="btn__details ms-2 me-2" (click)="mostrarDetalleHistorial(element.id)"  matTooltip="Detalle" (click)="setCurrentPatient(element.IdPaciente)"> search</mat-icon>
         <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
         <mat-icon type="button" class="btn__edit ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
       </mat-cell>

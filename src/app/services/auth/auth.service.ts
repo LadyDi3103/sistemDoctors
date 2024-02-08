@@ -57,11 +57,11 @@ export class AuthService {
             const body = res.body;
             localStorage.setItem('token', body.token);
             this.isAuthenticatedSubject.next(true);
-            console.log(body.user.rol);
+          
             this.rolSubject.next(body.user.rol);
 
             // Redirigir según el rol del usuario
-            if (body.user.rol === 'admin') {
+            if (body.user.role_id === 1) {
               this.router.navigate(['/home-admin']);
             } else {
               this.router.navigate(['/dashboard']); // Cambiar según la ruta del dashboard
