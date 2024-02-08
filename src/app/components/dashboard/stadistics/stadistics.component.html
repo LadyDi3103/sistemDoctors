@@ -1,0 +1,179 @@
+<div style="text-align: center; background-color: #f4f4f4" class="p-3">
+  <!-- <h1>Statistics Works!</h1>
+  <div style="display: grid; place-items: center; background-color: blueviolet">
+    Pacientes dados de alta {{ totalPacientes }}
+  </div>
+  <div style="display: grid; place-items: center; background-color: blueviolet">
+    Pacientes mayores de edad {{ totalPacientesMayoresEdad }}
+  </div>
+  <div style="display: grid; place-items: center; background-color: blueviolet">
+    Pacientes menores de edad {{ totalPacientesMenoresEdad }}
+  </div> -->
+  <div style="display: flex; gap: 10px">
+    <div style="display: flex; gap: 10px; flex-direction: column">
+      <div style="display: flex; gap: 10px">
+        <!-- <div style="width: 400px; height: 100px; background-color: orange;">
+          <h2>
+            <div *ngIf="pacientesAtendidosMes; else cargandoTemplate">
+              <h1>{{ pacientesAtendidosMes }}</h1>
+              <h3>Pacientes atendidos durante el mes</h3>
+            </div>
+
+            <ng-template #cargandoTemplate> Cargando... </ng-template>
+          </h2>
+        </div> -->
+
+        <div
+          style="
+            width: 400px;
+            height: 100px;
+            background-color: #ffffff;
+            border-radius: 8px;
+          "
+        >
+          <div class="row m-0 h-100">
+            <div
+              class="col-3 h-100 p-0 d-flex flex-column justify-content-center align-items-center"
+              style="border-right: 1px solid rgb(236, 172, 93)"
+            >
+              <mat-icon>groups</mat-icon>
+            </div>
+            <div class="col-9 p-2">
+              <span class="title">{{
+                pacientesAtendidosMes ? pacientesAtendidosMes : "Cargando"
+              }}</span>
+              <span class="subtitle">Pacientes atendidos durante el mes</span>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="
+            width: 400px;
+            height: 100px;
+            background-color: #ffffff;
+            border-radius: 8px;
+          "
+        >
+          <div class="row m-0 h-100">
+            <div
+              class="col-3 h-100 p-0 d-flex flex-column justify-content-center align-items-center"
+              style="border-right: 1px solid rgb(236, 172, 93)"
+            >
+              <mat-icon>groups</mat-icon>
+            </div>
+            <div class="col-9 p-2">
+              <span class="title">{{
+                ultimosPacientesMes ? ultimosPacientesMes : "Cargando"
+              }}</span>
+              <span class="subtitle">Pacientes nuevos durante el mes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; gap: 30px">
+        <div
+          style="
+            display: grid;
+            grid-template-rows: repeat(2, 200px);
+            grid-template-columns: repeat(2, 400px);
+            gap: 20px;
+          "
+        >
+          <div
+            style="
+              width: 400px;
+              height: 200px;
+              box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+              overflow-y: auto;
+            "
+            class="d-flex flex-column justify-content-center"
+          >
+            <div style="font-weight: bold" class="mb-2">
+              Citas para el día de hoy
+            </div>
+            <table style="border-spacing: 20px; box-sizing: border-box">
+              <tr>
+                <th>HORA</th>
+                <th>PACIENTE</th>
+                <th>DOCUMENTO</th>
+                <th>TRATAMIENTO</th>
+              </tr>
+              <tr *ngFor="let cita of dataCitas">
+                <td>
+                  {{ cita!.fecha | date : "h:mm a" }}
+                </td>
+                <td style="padding: 0">{{ cita.id_paciente }}</td>
+                <td style="padding: 0">DOCUMENT</td>
+                <td style="padding: 0">{{ cita.tratamiento }}</td>
+              </tr>
+            </table>
+          </div>
+          <div
+            style="
+              width: 400px;
+              height: 200px;
+              box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+            "
+          >
+            <app-doughnut-chart
+              [totalPacientesMayoresEdad]="totalPacientesMayoresEdad"
+              [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"
+            ></app-doughnut-chart>
+          </div>
+          <div
+            style="
+              width: 400px;
+              height: 200px;
+              box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+            "
+          >
+            <app-pie-chart [chartData]="chartData"></app-pie-chart>
+          </div>
+          <div
+            style="
+              width: 400px;
+              height: 200px;
+              box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+            "
+          >
+            <!-- <app-pie-chart
+              [totalPacientesMayoresEdad]="totalPacientesMayoresEdad"
+              [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"
+            ></app-pie-chart> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="width: 300px; display: flex; flex-direction: column; gap: 20px">
+      <div
+        style="
+          height: 200px;
+          width: 100%;
+          box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+        "
+      >
+        <app-my-line-chart
+          [totalPacientesMayoresEdad]="totalPacientesMayoresEdad"
+          [totalPacientesMenoresEdad]="totalPacientesMenoresEdad"
+        ></app-my-line-chart>
+      </div>
+      <div
+        style="
+          height: 200px;
+          width: 100%;
+          box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+        "
+      >
+        <!-- <app-bar-chart></app-bar-chart> -->
+      </div>
+      <div
+        style="
+          height: 200px;
+          width: 100%;
+          box-shadow: 0.2px 0.2px 10px rgb(171, 171, 171);
+        "
+      ></div>
+    </div>
+  </div>
+</div>

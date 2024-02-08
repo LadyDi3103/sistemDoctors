@@ -11,4 +11,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./footer.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class FooterComponent { }
+export  class FooterComponent { }

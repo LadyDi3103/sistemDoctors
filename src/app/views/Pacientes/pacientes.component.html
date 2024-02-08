@@ -1,0 +1,92 @@
+
+
+<mat-card class="p-3">
+  <h2 class="text-center textH1 flex-grow-1 ms-2 mt-2">Lista de Pacientes</h2>
+  
+  <div class="d-flex align-items-center mt-2 ml2 me-2">
+
+  <!-- FILTRO -->
+  <mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" class="ms-2 mb-2 float-end"(click)="crearUnPaciente()">
+    <mat-icon>person_add</mat-icon>
+    Paciente
+  </button>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+    <ng-container matColumnDef="paciente">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Nombre del Paciente
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.paciente}}</mat-cell>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="IdTipoDocumento">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Tipo Documento
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.IdTipoDocumento}} {{element.NumeroDocumento}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Num_Cel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Teléfono
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Num_Cel}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="FNac">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Fecha Nacimiento
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.FNac | date: 'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Email
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Domicilio">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Dirección
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.Domicilio}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acciones">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>
+        Acciones
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.acciones}}
+        <mat-icon type="button" class="btn__details ms-2 me-2" (click)="mostrarDetalleHistorial(element.IdPaciente)"  matTooltip="Detalle" (click)="setCurrentPatient(element.IdPaciente)"> search</mat-icon>
+        <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
+        <mat-icon type="button" class="btn__edit ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
+      </mat-cell>
+    </ng-container> 
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">Ningun dato coincide con el filtro "{{input.value}}"</td>
+    </tr>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+
+</mat-card>
+
+<!-- <app-historial [IdPaciente]="idCurrentPatient"></app-historial> -->
+

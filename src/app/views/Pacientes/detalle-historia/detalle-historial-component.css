@@ -1,0 +1,25 @@
+/* .linea {
+    /* display: flex; */
+
+
+*/ .bloque {
+    margin-right: 20px;
+
+}
+
+.bloque p {
+    display: inline-block;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.separator {
+    margin-left: 10px;
+    /* Ajusta el valor según sea necesario para el espacio deseado */
+    margin-right: 10px;
+    display: inline-block;
+}
