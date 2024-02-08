@@ -1,4 +1,4 @@
-// stadistics.component.ts
+
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { CitasService } from 'src/app/services/citas/citas.service';
@@ -28,7 +28,7 @@ export class StadisticsComponent implements OnInit {
   }
 
   async getPacientes() {
-    const result = await firstValueFrom(
+    const result = await firstValueFrom( 
       this.pacientesService.getAllPacientes()
     );
     this.updateChartData(result);
@@ -54,6 +54,7 @@ export class StadisticsComponent implements OnInit {
 
   async getCitas() {
     const result = await firstValueFrom(this.citasService.getCitas());
+    console.log(result, 'RESULT 3222');
     this.dataCitas = result;
     const currentDate = new Date();
     const lastMonthPacientes: [] = result.filter((cita: any) => {

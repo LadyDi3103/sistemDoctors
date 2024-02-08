@@ -24,7 +24,8 @@ export class PacientesService {
     );
   }
 
-  getPacienteById(pacienteId: string): Observable<any> {
+  getPacienteById(pacienteId: any): Observable<any> {
+    console.log(pacienteId, 'pacienteIDDDDDD')
     const headers = new HttpHeaders({
       accept: 'application/json',
     });
