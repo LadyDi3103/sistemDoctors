@@ -4,7 +4,7 @@ table {
   
   .mat-mdc-form-field {
     font-size: 14px;
-    width: 60%;
+    width: 85%;
     margin-right: 10px;
   }
   th.mat-sort-header-sorted {
@@ -50,4 +50,10 @@ color: #B03048;
 }
 .estado-select {
     width: 150px;  
+}
+.close-button-container {
+  position: fixed;
+  top: 145px;
+  right: 37px;
+  z-index: 9999; /* Ajusta el z-index según sea necesario */
 }

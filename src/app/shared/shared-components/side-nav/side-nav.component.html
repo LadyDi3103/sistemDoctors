@@ -1,81 +1,43 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2 bg-light">
+      <mat-nav-list>
+        <!-- Aquí va el contenido del sidenav -->
+        <a mat-list-item routerLink="/dashboard/citas">
+          <div class="d-flex align-items-center">
+            <mat-icon>calendar_month</mat-icon>
+            <span class="ms-2">Citas</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/dashboard">
+          <div class="d-flex align-items-center">
+            <mat-icon>dashboard</mat-icon>
+            <span class="ms-2">Dashboard</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/dashboard/doctores">
+          <div class="d-flex align-items-center">
+            <mat-icon>medication</mat-icon>
+            <span class="ms-2">Doctores</span>
+          </div>
+        </a>
+        <a mat-list-item routerLink="/dashboard/pacientes">
+          <div class="d-flex align-items-center">
+            <mat-icon>account_circle</mat-icon>
+            <span class="ms-2">Pacientes</span>
+          </div>
+        </a>
 
-<div class="main_container">
-  <div class="container__sidebar">
-    <mat-nav-list>
-      <!-- <div class="navbar__logo">
-      <img class="sidebar__logo--img" src="../../../../assets/logos/snake-removebg-preview.png" alt="imagen de usuario">
-    </div> -->
-
-    <a mat-list-item routerLink="/dashboard/citas">
-      <div class="d-flex align-items-center">
-        <mat-icon>calendar_month</mat-icon>
-        <span class="ms-2">Citas</span>
-      </div>
-    </a>
-
-    <a mat-list-item routerLink="/dashboard">
-      <div class="d-flex align-items-center">
-        <mat-icon>dashboard</mat-icon>
-        <span class="ms-2">Dashboard</span>
-      </div>
-    </a>
-    
-    <a mat-list-item routerLink="/dashboard/doctores">
-      <div class="d-flex align-items-center">
-        <mat-icon>medication</mat-icon>
-        <span class="ms-2">Doctores</span>
-      </div>
-    </a>
-
-    <a mat-list-item routerLink="/dashboard/pacientes">
-      <div class="d-flex align-items-center">
-        <mat-icon>account_circle</mat-icon>
-        <span class="ms-2">Pacientes</span>
-      </div>
-    </a>
-
-
-
-
-      <a mat-list-item routerLink="/dashboard/lista-citas">
-        <div class="d-flex align-items-center">
-          <mat-icon>calendar_today</mat-icon>
-          <span class="ms-2">Lista de Citas</span>
-        </div>
-      </a>
-
-
-      <!-- <a mat-list-item routerLink="/dashboard/crear-paciente">
-        <div class="d-flex align-items-center">
-          <mat-icon>person_add</mat-icon>
-          <span class="ms-2">Registrar Paciente</span>
-        </div>
-      </a> -->
-
-      <!-- <a mat-list-item routerLink="/dashboard/nuevo-historial">
-        <div class="d-flex align-items-center">
-          <mat-icon>library_add</mat-icon>
-          <span class="ms-2">Nuevo Historial</span>
-        </div>
-      </a>
-
-      <a mat-list-item routerLink="/dashboard/historial">
-        <div class="d-flex align-items-center">
-          <mat-icon>library_books</mat-icon>
-          <span class="ms-2">Historial</span>
-        </div>
-      </a>  -->
-
-      <a mat-list-item routerLink="/home">
-        <div class="d-flex align-items-center">
-          <mat-icon>logout</mat-icon>
-          <span class="ms-2">Salir</span>
-        </div>
-      </a>
-    </mat-nav-list>
-  </div>
-
-  <div class="w-100" style="width: 100vw">
-    <router-outlet> </router-outlet>
+        <a mat-list-item routerLink="/home">
+          <div class="d-flex align-items-center">
+            <mat-icon>logout</mat-icon>
+            <span class="ms-2">Salir</span>
+          </div>
+        </a>
+      </mat-nav-list>
+    </div>
+    <div class="col-md-10 bg-secondary">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>

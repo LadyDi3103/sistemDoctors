@@ -38,7 +38,6 @@ import { NgChartsModule } from 'ng2-charts';
 
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { CreaPacienteComponent } from './views/Pacientes/crea-paciente/crea-paciente.component';
-import { CitasComponent } from './views/citas/citas.component';
 import { DoctoresComponent } from './views/doctores/doctores.component';
 import { MatNativeDateModule } from '@angular/material/core';
 
@@ -59,6 +58,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogRef } from '@angular/material/dialog';
 import { HomeComponent } from './views/home/home.component';
 import { HomeAdminComponent } from './views/home-admin/home-admin.component';
+import { ModuloCitasModule } from './views/citas/modulo-citas/modulo-citas.module';
 
 registerLocaleData(es);
 @NgModule({
@@ -67,7 +67,6 @@ registerLocaleData(es);
     LoginComponent,
     DashboardComponent,
     CreaPacienteComponent,
-    CitasComponent,
     DoctoresComponent,
     CreateCitaComponent,
     StadisticsComponent,
@@ -115,6 +114,7 @@ registerLocaleData(es);
     MatFormFieldModule,
     DashboardModule,
     NgChartsModule,
+    ModuloCitasModule,
   ],
   providers: [
     // { provide: MatDialogRef, useValue: {} },

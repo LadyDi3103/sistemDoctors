@@ -23,8 +23,6 @@ import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EditModalComponent } from '../Pacientes/edit-modal/edit-modal.component';
 import { DetalleHistorialComponent } from '../Pacientes/detalle-historia/detalle-historial-component';
-import { ListaCitasComponent } from '../citas/lista-citas/lista-citas.component';
-import { FormAtencionCitaComponent } from '../citas/form-atencion-cita/form-atencion-cita.component';
 import { DialogService } from '../../services/dialog/dialog.service';
 
 
@@ -37,8 +35,7 @@ import { DialogService } from '../../services/dialog/dialog.service';
     DialogCitaComponent,
     EditModalComponent,
 DetalleHistorialComponent,
-ListaCitasComponent,
-FormAtencionCitaComponent
+
   ],
   imports: [
     CommonModule,

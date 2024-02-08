@@ -1,6 +1,7 @@
-<mat-sidenav-container class="sidenav-container" fullscreen>
 
-  <mat-sidenav #sidenav mode="over">
+<mat-sidenav-container  fullscreen >
+
+  <mat-sidenav #sidenav mode="over" class="sidenav">
 
     <!-- CONTENIDO QUE VA EN EL SIDENAV -->
     <mat-nav-list (click)="sidenav.close()">
@@ -41,7 +42,6 @@
       </a>
 
     </mat-nav-list>
-
   </mat-sidenav>
 
  <!-- CONTENIDO QUE VA EN EL TOOL-BAR -->
@@ -56,33 +56,19 @@
     <span class="example-spacer"></span>
 
     <div class="desktop-menu d-none d-md-block">
-
-      <a mat-button routerLink="home">
-        <!-- <mat-icon>home</mat-icon> -->
-        <span class="ms-2">Inicio</span>
-      </a>
-
-      <a mat-button>
-        Nosotros
-      </a>
-
-      <a mat-button>
-        Servicios
-      </a>
-
-      <a mat-button>
-        Contáctanos
-      </a>
-
-      <a mat-button routerLink="login">
-        <!-- <mat-icon>account_circle</mat-icon> -->
-        Iniciar Sesión
-      </a>
-
+      <a mat-button routerLink="home">Inicio</a>
+      <a mat-button>Nosotros</a>
+      <a mat-button>Servicios</a>
+      <a mat-button>Contáctanos</a>
+      <ng-container *ngIf="!isLoggedIn" >
+        <a mat-button routerLink="login">Iniciar Sesión</a>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn">
+        <a mat-button (click)="logout()">Cerrar Sesión</a>
+      </ng-container>
     </div>
-
   </mat-toolbar>
 
-  <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
 
 </mat-sidenav-container>
