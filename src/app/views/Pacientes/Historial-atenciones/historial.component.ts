@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
-import { DialogCitaComponent } from '../dialog-cita/dialog-cita.component';
+import { DialogCitaComponent } from '../../citas/dialog-cita/dialog-cita.component';
 
 export interface Tratamiento {
   Tratamiento: string;

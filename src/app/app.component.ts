@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -8,16 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-  authService = inject(AuthService);
-  router = inject(Router);
-  title = 'sistem';
+  isLoggedIn: boolean = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (!this.authService.getToken()) {
-      // this.router.navigate(['/login']);
-      return;
+    this.isLoggedIn = this.authService.isAuthenticated();
     }
-    this.authService.setAuthenticated(true);
-    this.router.navigate(['/dashboard']);
+
+  logout(): void {
+    this.authService.removeToken();
+    this.isLoggedIn = false;
+    this.router.navigate(['/home']);
   }
 }

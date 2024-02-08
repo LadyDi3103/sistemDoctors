@@ -27,7 +27,9 @@ export class MedicosService {
         'Content-Type': 'application/json',
       }),
     };
-    return this.httpClient.get(environment.BASE_URL_BACK + '/medicos');
+    return this.httpClient.get(
+      environment.BASE_URL_BACK + '/medicos/getMedicos'
+    );
   }
 
   editarMedico(doctor: any): Observable<any> {

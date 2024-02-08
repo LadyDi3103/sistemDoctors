@@ -35,17 +35,36 @@ export class LoginComponent implements OnInit {
     });
   }
   async onSubmit() {
-    const { email, password } = this.loginForm.value;
-    const response = await firstValueFrom(
-      this.authService.login({ email, password })
-    );
-    console.log(
-      this.authService.rol$.subscribe((res) => {
-        console.log(res);
-      }),
-      'ESTE ES EL ROL'
-    );
+  //   const { email, password } = this.loginForm.value;
+  //   const response = await firstValueFrom(
+  //     this.authService.login({ email, password })
+  //   );
+  //   console.log(
+  //     this.authService.rol$.subscribe((res) => {
+  //       console.log(res);
+  //     }),
+  //     'ESTE ES EL ROL'
+  //   );
 
-    console.log(response, 'RESPONSE');
-  }
+  //   console.log(response, 'RESPONSE');
+  // }
+  const { email, password } = this.loginForm.value;
+  const response = await firstValueFrom(
+    this.authService.login({ email, password })
+  );
+  console.log(response, 'RESPONSE');
+  console.log(
+    this.authService.rol$.subscribe((res) => {
+      console.log(res);
+      if (res === 'medico') {
+        this.router.navigate(['/dashboard']);
+      } else if (res === 'admin') {
+        this.router.navigate(['/home-admin']);
+      } else {
+        console.log('Rol desconocido, no se puede redirigir.');
+      }
+    }),
+    'ESTE ES EL ROL'
+  );
+}
 }

@@ -4,7 +4,7 @@ table {
   
   .mat-mdc-form-field {
     font-size: 14px;
-    width: 60%;
+    width: 85%;
     margin-right: 10px;
   }
   th.mat-sort-header-sorted {
@@ -20,6 +20,9 @@ cursor:pointer;
 .btn__delete{
 color: #B03048;
 }
+.btn__form{
+    color: #80940b;
+    }
 
 /* Estilo para el mat-form-field */
 .mat-form-field {
@@ -45,4 +48,12 @@ color: #B03048;
   outline: none; /* Elimina el contorno de enfoque predeterminado */
   border-color: #007bff; /* Cambia el color del borde cuando el input está enfocado */
 }
-  
+.estado-select {
+    width: 150px;  
+}
+.close-button-container {
+  position: fixed;
+  top: 145px;
+  right: 37px;
+  z-index: 9999; /* Ajusta el z-index según sea necesario */
+}

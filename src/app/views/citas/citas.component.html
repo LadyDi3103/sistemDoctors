@@ -1,0 +1,27 @@
+<div class="container__citas p-3">
+  <!-- <h1 style="font-size: 100px" *ngIf="edit">EDITANDO CITA</h1> -->
+
+  <div class="d-flex justify-content-center align-items-center">
+    <h2 class="text-center mt-2"><strong>Programación de Citas</strong></h2>
+
+    <button mat-raised-button color="primary" class="ms-4 mb-2" (click)="openDialog()">
+      <mat-icon>event_up_comming</mat-icon>
+      Agendar Cita
+    </button>
+
+    <button mat-raised-button color="primary" class="ms-4 mb-2" (click)="toggleCalendarVisibility()">
+      <mat-icon>event_note</mat-icon>
+      Lista de Citas
+    </button>
+
+  </div>
+
+  <!-- Mostrar el calendario si showCalendar es verdadero -->
+  <div class="p-2" *ngIf="showCalendar">
+    <full-calendar [options]="calendarOptions"></full-calendar>
+  </div>
+
+  <!-- Mostrar la lista de citas si showCalendar es falso -->
+  <app-lista-citas *ngIf="!showCalendar" (onClose)="toggleCalendarVisibility()" ></app-lista-citas>
+
+</div>
