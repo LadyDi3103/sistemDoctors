@@ -2,27 +2,15 @@
   <h2 mat-dialog-title class="text-center">AGENDAR CITA</h2>
 
   <div mat-dialog-content>
-    <form
-      [formGroup]="form"
-      (submit)="crearNuevaCita()"
-      class="form-container crea-paciente-details-form"
-    >
+    <form [formGroup]="form" (submit)="crearNuevaCita()" class="form-container crea-paciente-details-form">
       <mat-grid-list cols="12" rowHeight="100px" gutterSize="10">
         <!-- Fecha -->
         <mat-grid-tile [colspan]="4">
           <mat-form-field class="form-field example-full-width">
             <mat-label>Fecha y Hora</mat-label>
-            <input
-              matInput
-              formControlName="fecha"
-              placeholder="Fecha de Cita"
-              type="datetime-local"
-              [matDatepicker]="appointmentDate"
-            />
-            <mat-datepicker-toggle
-              matSuffix
-              [for]="appointmentDate"
-            ></mat-datepicker-toggle>
+            <input matInput formControlName="fecha" placeholder="Fecha de Cita" type="datetime-local"
+              [matDatepicker]="appointmentDate" />
+            <mat-datepicker-toggle matSuffix [for]="appointmentDate"></mat-datepicker-toggle>
             <mat-datepicker #appointmentDate></mat-datepicker>
           </mat-form-field>
         </mat-grid-tile>
@@ -55,11 +43,7 @@
         <mat-grid-tile [colspan]="4">
           <mat-form-field class="form-field example-full-width">
             <mat-label>Tratamiento</mat-label>
-            <input
-              matInput
-              formControlName="tratamiento"
-              placeholder="Tratamiento"
-            />
+            <input matInput formControlName="tratamiento" placeholder="Tratamiento" />
           </mat-form-field>
         </mat-grid-tile>
 
@@ -70,17 +54,19 @@
           <input matInput formControlName="estado" placeholder="Pendiente" [disabled]="true">
         </mat-form-field>
       </mat-grid-tile> -->
+      </mat-grid-list>
 
-        <!-- Botón Enviar -->
-        <mat-grid-tile [colspan]="12">
-          <button mat-raised-button color="primary" type="submit">
-            Enviar
-          </button>
+      <mat-grid-list cols="12" rowHeight="100px" gutterSize="10" class="text-center">
+        <!-- Botones Cancelar y Enviar -->
+        <mat-grid-tile [colspan]="12" class="d-flex justify-content-center align-items-center">
+          <div mat-dialog-actions class="d-flex justify-content-center">
+            <button mat-raised-button mat-dialog-close class="mr-2">Cancelar</button>
+            <button mat-raised-button color="primary" type="submit">Enviar</button>
+          </div>
         </mat-grid-tile>
       </mat-grid-list>
+ 
     </form>
   </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button mat-dialog-close>Close</button>
-  </div>
+
 </div>

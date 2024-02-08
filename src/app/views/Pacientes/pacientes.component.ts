@@ -6,10 +6,10 @@ import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { FormControl, FormGroup } from '@angular/forms';
-import { EditModalComponent } from '../edit-modal/edit-modal.component';
+import { EditModalComponent } from './edit-modal/edit-modal.component';
 import { MatPaginator } from '@angular/material/paginator';
-import { CreaPacienteComponent } from '../crea-paciente/crea-paciente.component';
-import { DetalleHistorialComponent } from '../detalle-historia/detalle-historial-component';
+import { CreaPacienteComponent } from './crea-paciente/crea-paciente.component';
+import { DetalleHistorialComponent } from './detalle-historia/detalle-historial-component';
 
 
 

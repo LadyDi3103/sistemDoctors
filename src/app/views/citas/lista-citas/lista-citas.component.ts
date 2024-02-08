@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
@@ -22,6 +22,7 @@ export interface Citas {
   styleUrls: ['./lista-citas.component.css'],
 })
 export class ListaCitasComponent implements AfterViewInit, OnInit {
+  disabled: boolean = false;
   estadoSeleccionado: string = '';
   displayedColumns: string[] = [
     'fecha',
@@ -33,10 +34,11 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
     'acciones',
   ];
   dataSource = new MatTableDataSource<Citas>();
-  estados: string[] = ['PENDIENTE', 'CANCELADO', 'CONFIRMADO'];
+  estados: string[] = ['PENDIENTE', 'CANCELADO', 'CONFIRMADO', 'REPROGRAMADO'];
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @Output() onClose: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private dialogService: DialogService,
@@ -125,4 +127,14 @@ export class ListaCitasComponent implements AfterViewInit, OnInit {
       // Puedes realizar acciones después de que se cierre el diálogo si es necesario
     });
   }
-}
+  closeList() {
+    this.onClose.emit(); // Emitir el evento onClose
+    // this.showCalendar = true; // Actualizar la variable para mostrar el calendario
+  }
+    // Aquí puedes emitir un evento o simplemente cambiar alguna bandera en el componente padre
+    // Por ejemplo, puedes tener una variable en el componente padre que controle si se muestra el calendario o la lista de citas
+    // Y aquí puedes cambiar el valor de esa variable
+  }
+
+
+

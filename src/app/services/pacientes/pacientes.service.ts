@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { DataUserEdit } from '../../interfaces/interfaces';
 import { of } from 'rxjs'; // Asegúrate de importar 'of' de 'rxjs'
-import { Paciente } from '../../views/dashboard/Pacientes/pacientes.component';
+import { Paciente } from '../../views/Pacientes/pacientes.component';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +68,7 @@ export class PacientesService {
           tipDocum: paciente.IdTipoDocumento,
           codDocum: paciente.NumeroDocumento
         };
-        return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_ELIMINAR_PACIENTE,body);
+        return this.httpClient.post<any>(environment.BASE_URL_BACK + environment.URL_ENDPOINT_PACIENTES+`/${paciente.IdPaciente}`,body);
       } else{
         console.error('El objeto paciente es undefined');
         return of(null);

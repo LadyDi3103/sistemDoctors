@@ -1,38 +1,5 @@
-<div class="container-fluid">
-  <div class="row" >
-    <div class=" welcome-section">
-      <div class="col-12 col-md-6 p-0">
-        <div [@fadeInAnimation] class="img-container">
-          <img src="../../../assets/fondos/removebg-preview.png" alt="Imagen del médico" class="d-none d-md-block">      
-        </div>      
-      </div>
-      <div class="col-12 col-md-6 p-0">
-        <div class="description-container">
-          <h1 [@fadeInAnimation]>Bienvenido a MediClinic </h1>
-          <h2 [@fadeInAnimation]>Encantados de poder atenderte... </h2> 
-
-          <div [@fadeInAnimation] class="col-12 p-0 service-section">
-            <mat-grid-list class="servicios-container" [cols] = "cols"[rowHeight]="rowHeight" >
-          
-              <mat-grid-tile  *ngFor="let servicio of servicios">
-                <mat-card class=" mat-elevation-z7" >
-                  <mat-card-header>
-                    <mat-card-title>{{ servicio.titulo }}</mat-card-title>
-                  </mat-card-header>
-                  <img mat-card-image src="{{ servicio.imagen }}" alt="{{ servicio.titulo }}">
-                  <mat-card-content>
-                    {{ servicio.descripcion }}
-                  </mat-card-content>
-                </mat-card>
-              </mat-grid-tile >
-              
-              </mat-grid-list>
-          </div> 
-             
-        </div>
-      </div>
-    </div> 
-  
+<div class="w-75 mx-auto mt-2">
+  <app-doctores></app-doctores>
 </div>
 
 <app-footer></app-footer>
