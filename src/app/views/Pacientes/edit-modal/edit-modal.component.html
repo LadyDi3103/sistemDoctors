@@ -1,4 +1,4 @@
-<h2 mat-dialog-title>Editar Paciente</h2>
+<h2 mat-dialog-title class="text-center">Editar Paciente</h2>
 <div mat-dialog-content>
  <!-- form en form Control name y eso asociar con  el form -->
 
@@ -6,10 +6,17 @@
 
   <mat-grid-list cols="12" rowHeight="100px" gutterSize="10">
 
-    <mat-grid-tile [colspan]="6">
+    <mat-grid-tile [colspan]="3">
       <mat-form-field class="form-field example-full-width">
-        <mat-label>Nombre del Paciente</mat-label>
-        <input matInput id="NombrePaciente" formControlName="paciente"/>
+        <mat-label>Nombre</mat-label>
+        <input matInput id="nom_paciente" formControlName="nom_paciente"/>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile [colspan]="3">
+      <mat-form-field class="form-field example-full-width">
+        <mat-label>Apellido</mat-label>
+        <input matInput id="ape_paciente" formControlName="ape_paciente"/>
       </mat-form-field>
     </mat-grid-tile>
 
@@ -27,25 +34,28 @@
     <mat-grid-tile [colspan]="3">
       <mat-form-field appearance="fill">
         <mat-label>Num Documento</mat-label>
-        <input matInput id="NumeroDocumento" formControlName="NumeroDocumento">
+        <input matInput id="NumeroDocumento" formControlName="num_Documento">
       </mat-form-field>
     </mat-grid-tile>
 
   </mat-grid-list>
+
+
+
 
   <mat-grid-list cols="12" rowHeight="100px" gutterSize="10">
 
     <mat-grid-tile [colspan]="4">
     <mat-form-field appearance="fill" class="form-field example-full-width">
       <mat-label>Teléfono</mat-label>
-      <input matInput id="Num_Cel" formControlName="Num_Cel" />
+      <input matInput id="num_Cel" formControlName="num_Cel" />
     </mat-form-field>
   </mat-grid-tile>
 
   <mat-grid-tile [colspan]="8">
     <mat-form-field appearance="fill" class="form-field example-full-width">
       <mat-label>Correo Electrónico</mat-label>
-      <input matInput id="Email" formControlName="Email" />
+      <input matInput id="Email" formControlName="email" />
     </mat-form-field>
   </mat-grid-tile>
 
@@ -64,7 +74,7 @@
 
   <div mat-dialog-actions class="d-flex justify-content-center">
     <button mat-button (click)="cancelar()">Cancelar</button>
-    <button mat-raised-button (click)="editarPaciente()"  [disabled]="formulario2.invalid" type="submit" color="primary" cdkFocusInitial>Editar Paciente</button>
+    <button mat-raised-button [disabled]="formulario2.invalid" type="submit" color="primary" cdkFocusInitial (click)="editarPaciente()">Editar Paciente</button>
   </div>
 
 </form>

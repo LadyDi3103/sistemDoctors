@@ -1,9 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
-import { DialogData } from 'src/app/interfaces/interfaces';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import Swal from 'sweetalert2'
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -20,44 +18,42 @@ export class EditModalComponent implements OnInit {
     private pacientesService: PacientesService,
     private formBuilder: FormBuilder,
   ) {}
+
   ngOnInit(): void {
-    console.log("data NGONINIT: ", this.data);
-    
+    this.inicializarFormulario();
+  }
+
+  inicializarFormulario(): void {
     this.formulario2 = this.formBuilder.group({
-      IdPaciente: [this.data.paciente.IdPaciente],
-      paciente: [this.data.paciente.paciente],
-      IdTipoDocumento:[this.data.paciente.IdTipoDocumento],
-      NumeroDocumento: [this.data.paciente.NumeroDocumento],
-      Num_Cel: [this.data.paciente.Num_Cel],
-      Email: [this.data.paciente.Email],
-      Domicilio: [this.data.paciente.Domicilio],
+      id: [this.data?.paciente?.id || null],
+      nom_paciente: [this.data?.paciente?.nom_paciente || null],
+      ape_paciente: [this.data?.paciente?.ape_paciente || null],
+      IdTipoDocumento: [this.data?.paciente?.IdTipoDocumento || null],
+      num_Documento: [this.data?.paciente?.num_Documento || null],
+      num_Cel: [this.data?.paciente?.num_Cel || null],
+      email: [this.data?.paciente?.email || null],
+      Domicilio: [this.data?.paciente?.Domicilio || null],
     });
   }
 
-
-
-editarPaciente() {
-  console.log("paciente: ", this.formulario2.value )
-  console.log(" EDITAR EDITMODALCOMPONENT")
-  this.pacientesService.editarPaciente(this.formulario2.value).subscribe({
-    next: (data: any) => {
-      console.log(data);
-      // this.cancelar();
-      console.log(`Paciente ${this.formulario2.value.paciente.paciente} editado correctamente`);
-      // this.pacientesService.getAllPacientes().subscribe({
-      //   next: (datos:any)=>{
-      //   console.log(datos, "datos");
-        
-      },
-       error: (error) => {
-        console.log(error);
+  editarPaciente(): void {
+    console.log('EDIT');
+    const pacienteEditado = this.formulario2.value;
+    console.log(pacienteEditado, 'paciente editado');
+    
+    this.pacientesService.editPaciente(pacienteEditado).subscribe({
+      // next: () => {
+      //   console.log('ENTRÓ A NEXT');
+      //   this.cancelar();
+      // },      
+      complete: () => {
+        console.log('ENTRÓ A complete');
+        this.cancelar();
       }
-      
     });
-
   }
 
-cancelar(): void {
-  this.dialogRef.close();
-}
+  cancelar(): void {
+    this.dialogRef.close();
+  }
 }

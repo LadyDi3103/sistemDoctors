@@ -3,7 +3,7 @@
 <mat-card class="p-3">
   <h2 class="text-center textH1 flex-grow-1 ms-2 mt-2">Lista de Pacientes</h2>
   
-  <div class="d-flex align-items-center mt-2 ml2 me-2">
+  <div class="d-flex align-items-center ml2 me-2">
 
   <!-- FILTRO -->
   <mat-form-field>
@@ -11,7 +11,7 @@
     <input matInput (keyup)="applyFilter($event)" #input autocomplete="off">
   </mat-form-field>
 
-  <button mat-raised-button color="primary" class="ms-2 mb-2 float-end"(click)="crearUnPaciente()">
+  <button mat-raised-button color="primary" class="ms-2 mb-2 float-end"(click)="openDialogCrearUnPaciente()">
     <mat-icon>person_add</mat-icon>
     Paciente
   </button>
@@ -19,11 +19,11 @@
 
   <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
 
-    <ng-container matColumnDef="paciente">
+    <ng-container matColumnDef="nom_paciente">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Nombre del Paciente
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.paciente}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.nom_paciente}} {{element.ape_paciente}}</mat-cell>
     </ng-container>
     
 
@@ -31,14 +31,14 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Tipo Documento
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.IdTipoDocumento}} {{element.NumeroDocumento}}</mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.IdTipoDocumento}} {{element.num_Documento}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Num_Cel">
+    <ng-container matColumnDef="num_Cel">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Teléfono
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Num_Cel}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.num_Cel}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="FNac">
@@ -49,11 +49,11 @@
     </ng-container>
     <!-- {{element.FNac | date: 'dd/MM/yyyy' }} -->
 
-    <ng-container matColumnDef="Email">
+    <ng-container matColumnDef="email">
       <mat-header-cell *matHeaderCellDef mat-sort-header>
         Email
       </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Email}} </mat-cell>
+      <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Domicilio">
@@ -68,8 +68,8 @@
         Acciones
       </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.acciones}}
-        <mat-icon type="button" class="btn__details ms-2 me-2" (click)="mostrarDetalleHistorial(element.id)"  matTooltip="Detalle" (click)="setCurrentPatient(element.IdPaciente)"> search</mat-icon>
-        <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element)" matTooltip="Borrar"> delete </mat-icon>
+        <mat-icon type="button" class="btn__details ms-2 me-2" (click)="mostrarDetalleHistorial(element.id)"  matTooltip="Detalle" > search</mat-icon>
+        <mat-icon type="button" class="btn__delete me-2 " (click)="eliminarPacientePorId(element.id)" matTooltip="Borrar"> delete </mat-icon>
         <mat-icon type="button" class="btn__edit ms-2 " (click)="openModalToEditPaciente(element)" matTooltip="Editar"> edit </mat-icon>
       </mat-cell>
     </ng-container> 
