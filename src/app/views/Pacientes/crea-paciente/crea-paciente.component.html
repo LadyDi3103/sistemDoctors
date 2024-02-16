@@ -1,52 +1,51 @@
 <div class="example-container p-2">
 
-  <!-- ********************************************************** -->
+  <!-- DATOS DEL PACIENTE -->
   <h2 class="text-center">DATOS DEL PACIENTE</h2>
-  <h2>Informacion Personal</h2>
-  <div [formGroup]="form" class="crea-paciente-details-form">
-    <!-- input nombre del paciente -->
 
+  <!-- Informacion Personal -->
+  <div [formGroup]="form" class="crea-paciente-details-form">
     <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
 
-      <mat-grid-tile [colspan]="7">
+      <!-- Nombre -->
+      <mat-grid-tile [colspan]="5">
         <mat-form-field class="form-field example-full-width" floatLabel="auto" hintLabel="Max 60 caracteres">
-          <mat-label>Nombre del Paciente</mat-label>
-          <input matInput #input maxlength="60" placeholder="Ex. Diana" formControlName="paciente" type="text" cellspacing="5">
-          <mat-error *ngIf="form.get('paciente')?.hasError('required')">El nombre es obligatorio</mat-error>
-          <mat-error *ngIf="form.get('paciente')?.hasError('minlength')">El nombre debe tener al menos 5 caracteres</mat-error>
-          <mat-error *ngIf="form.get('paciente')?.hasError('maxlength')">El nombre no debe exceder los 60 caracteres</mat-error>
-          
+          <mat-label>Nombre</mat-label>
+          <input matInput #input maxlength="60" placeholder="Ex. Diana" formControlName="nom_paciente" type="text">
+          <mat-error *ngIf="form.get('nom_paciente')?.hasError('required')">El nombre es obligatorio</mat-error>
+          <mat-error *ngIf="form.get('nom_paciente')?.hasError('minlength')">El nombre debe tener al menos 4 caracteres</mat-error>
+          <mat-error *ngIf="form.get('nom_paciente')?.hasError('maxlength')">El nombre no debe exceder los 60 caracteres</mat-error>
           <mat-hint align="end">
-            {{form.get('paciente')?.value?.length}} / 60
+            {{ form.get('nom_paciente')?.value?.length }} / 40
           </mat-hint>
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- Apellido -->
+      <mat-grid-tile [colspan]="5">
+        <mat-form-field class="form-field example-full-width" floatLabel="auto" hintLabel="Max 60 caracteres">
+          <mat-label>Apellido</mat-label>
+          <input matInput #input maxlength="60" placeholder="Ex. Rodriguez" formControlName="ape_paciente" type="text">
+          <mat-error *ngIf="form.get('ape_paciente')?.hasError('required')">El apellido es obligatorio</mat-error>
+          <mat-error *ngIf="form.get('ape_paciente')?.hasError('minlength')">El apellido debe tener al menos 4 caracteres</mat-error>
+          <mat-error *ngIf="form.get('ape_paciente')?.hasError('maxlength')">El nombre no debe exceder los 60 caracteres</mat-error>
+          <mat-hint align="end">
+            {{ form.get('ape_paciente')?.value?.length }} / 40
+          </mat-hint>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <!-- Edad -->
       <mat-grid-tile [colspan]="2">
-        <!-- input edad del paciente -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto" align=" end">
           <mat-label>Edad</mat-label>
-          <input matInput placeholder="Ex.18" formControlName="edad" type="text">
-          <mat-error *ngIf="form.get('paciente')?.hasError('required')">Ingresar la edad es obligatorio</mat-error>
+          <input matInput placeholder="Ex.18" formControlName="edad" type="number">
+          <mat-error *ngIf="form.get('edad')?.hasError('required')">Ingresar la edad es obligatorio</mat-error>
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- Sexo -->
       <mat-grid-tile [colspan]="3">
-        <!-- fecha -->
-        <mat-form-field class="form-field example-full-width">
-          <mat-label>Fecha</mat-label>
-          <input matInput formControlName="appointment" placeholder="Fecha de Atención"
-            [matDatepicker]="appointmentDate" >
-          <mat-datepicker-toggle matSuffix [for]="appointmentDate"></mat-datepicker-toggle>
-          <mat-datepicker #appointmentDate></mat-datepicker>
-        </mat-form-field>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
-      <mat-grid-tile [colspan]="3">
-        <!-- Sexo -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Sexo</mat-label>
           <mat-select formControlName="genderType" placeholder="Seleccionar">
@@ -56,8 +55,8 @@
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- TipoDocumento -->
       <mat-grid-tile [colspan]="3">
-        <!-- TipoDocumento -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Tipo Documento</mat-label>
           <mat-select formControlName="IdTipoDocumento" placeholder="Seleccionar">
@@ -68,188 +67,152 @@
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- N. Documento -->
       <mat-grid-tile [colspan]="3">
-        <!-- DNI -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>N. Documento</mat-label>
-          <input matInput placeholder="Ex 11111111" formControlName="num_Documento" type="text">
+          <input matInput placeholder="Ex 11111111" formControlName="num_Documento" type="number">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- Celular -->
       <mat-grid-tile [colspan]="3">
-        <!-- cel -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Celular</mat-label>
-          <input matInput placeholder="Ex 999 999 999" formControlName="num_Cel" type="text">
+          <input matInput placeholder="Ex 999 999 999" formControlName="num_Cel" type="number">
         </mat-form-field>
       </mat-grid-tile>
 
-
-    </mat-grid-list>
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
+      <!-- Email -->
       <mat-grid-tile [colspan]="8">
-        <!-- Email -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Email</mat-label>
-          <input matInput placeholder="Ex ejemplo@ejemplo.com" formControlName="Email" type="text">
+          <input matInput placeholder="Ex ejemplo@ejemplo.com" formControlName="email" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- F. Nacimiento -->
       <mat-grid-tile [colspan]="4">
-        <!-- FNac -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>F. Nacimiento</mat-label>
-          <input matInput placeholder="31/03/1987" formControlName="FNac" type="text">
+          <input matInput placeholder="31/03/1987" formControlName="FNac" type="date">
         </mat-form-field>
       </mat-grid-tile>
 
-    </mat-grid-list>
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
+      <!-- N hijos -->
       <mat-grid-tile [colspan]="2">
-        <!-- Hijos -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>N hijos</mat-label>
-          <input matInput placeholder="Hijos" formControlName="Hijos" type="text">
+          <input matInput placeholder="Hijos" formControlName="Hijos" type="number">
         </mat-form-field>
-
       </mat-grid-tile>
 
+      <!-- Domicilio -->
       <mat-grid-tile [colspan]="10">
-        <!-- Domicilio -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Domicilio</mat-label>
           <input matInput placeholder="Ex Calle Juan de ..." formControlName="Domicilio" type="text">
         </mat-form-field>
-
       </mat-grid-tile>
 
-    </mat-grid-list>
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
+      <!-- Ocupacion -->
       <mat-grid-tile [colspan]="6">
-        <!-- OCUPACION -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Ocupac</mat-label>
           <input matInput placeholder="Ex Albañil" formControlName="Ocupac" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- GPO -->
       <mat-grid-tile [colspan]="3">
-        <!-- Gpo -->
         <mat-form-field class="form-field" floatLabel="auto">
           <mat-label>GPO</mat-label>
           <input matInput placeholder="" formControlName="Gpo" type="text">
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="3">
 
-        <!-- EC -->
+      <!-- EC -->
+      <mat-grid-tile [colspan]="3">
         <mat-form-field class="form-field" floatLabel="auto">
           <mat-label>EC</mat-label>
           <input matInput placeholder="" formControlName="EC" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
-    </mat-grid-list>
-
-    <h2>Antecedentes del Paciente</h2>
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
+      <!-- Alergias -->
       <mat-grid-tile [colspan]="8">
-        <!-- Alergias -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Alergias</mat-label>
           <input matInput placeholder="sinusitis" formControlName="alergias" type="text">
         </mat-form-field>
       </mat-grid-tile>
-      <mat-grid-tile [colspan]="2">
 
-        <!-- MEN -->
+      <!-- MEN -->
+      <mat-grid-tile [colspan]="2">
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>MEN</mat-label>
           <input matInput placeholder="" formControlName="MEN" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- SÑO -->
       <mat-grid-tile [colspan]="2">
-        <!-- SÑO -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>SÑO</mat-label>
           <input matInput placeholder="" formControlName="SÑO" type="text">
         </mat-form-field>
       </mat-grid-tile>
-    </mat-grid-list>
 
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
+      <!-- Cirugías -->
       <mat-grid-tile [colspan]="8">
-        <!-- Cirugias -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Cirugías</mat-label>
           <input matInput placeholder="" formControlName="Cirugias" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
-
+      <!-- CPO -->
       <mat-grid-tile [colspan]="2">
-        <!-- CPO -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>CPO</mat-label>
           <input matInput placeholder="CPO" formControlName="CPO" type="text">
         </mat-form-field>
-
       </mat-grid-tile>
 
-
+      <!-- NOC -->
       <mat-grid-tile [colspan]="2">
-        <!-- NOC -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>NOC</mat-label>
           <input matInput placeholder="" formControlName="NOC" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
-    </mat-grid-list>
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
+      <!-- Ant. Fam -->
       <mat-grid-tile [colspan]="8">
-        <!-- Ant Fam -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Ant. Fam</mat-label>
           <input matInput placeholder="AntFam" formControlName="AntFam" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- ANS -->
       <mat-grid-tile [colspan]="2">
-        <!-- ANS -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>ANS</mat-label>
           <input matInput placeholder="" formControlName="ANS" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
+      <!-- CIG -->
       <mat-grid-tile [colspan]="2">
-        <!-- CIG -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>CIG</mat-label>
           <input matInput placeholder="" formControlName="CIG" type="text">
         </mat-form-field>
       </mat-grid-tile>
 
-
-    </mat-grid-list>
-
-
-
-    <mat-grid-list cols="12" rowHeight="100px" gutterSize="15">
-
+      <!-- Ant. Pers -->
       <mat-grid-tile [colspan]="12">
-        <!-- AntPers -->
         <mat-form-field class="form-field example-full-width" floatLabel="auto">
           <mat-label>Ant. Pers</mat-label>
           <input matInput placeholder="" formControlName="AntPers" type="text">
@@ -258,10 +221,11 @@
 
     </mat-grid-list>
 
+    <!-- Botones -->
     <section>
       <div class="example-button-row">
         <button mat-raised-button (click)="cancelar()">Cancelar</button>
-        <button mat-raised-button  [mat-dialog-close]="data" color="primary" (click)="crearPacienteNuevo()" >Crear Paciente</button>
+        <button mat-raised-button [mat-dialog-close]="data" color="primary" (click)="crearPacienteNuevo()">Crear Paciente</button>
       </div>
     </section>
 

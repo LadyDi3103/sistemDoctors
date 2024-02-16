@@ -59,6 +59,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { HomeComponent } from './views/home/home.component';
 import { HomeAdminComponent } from './views/home-admin/home-admin.component';
 import { ModuloCitasModule } from './views/citas/modulo-citas/modulo-citas.module';
+import { ModuloPacientesModule } from './views/Pacientes/modulo-pacientes/modulo-pacientes.module';
 
 registerLocaleData(es);
 @NgModule({
@@ -115,6 +116,7 @@ registerLocaleData(es);
     DashboardModule,
     NgChartsModule,
     ModuloCitasModule,
+    ModuloPacientesModule,
   ],
   providers: [
     // { provide: MatDialogRef, useValue: {} },

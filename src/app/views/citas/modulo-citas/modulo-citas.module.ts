@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ListaCitasComponent } from '../lista-citas/lista-citas.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,6 +12,8 @@ import { CitasComponent } from '../citas.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { FormAtencionCitaComponent } from '../form-atencion-cita/form-atencion-cita.component';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 
@@ -32,6 +34,12 @@ FormAtencionCitaComponent,
     MatPaginatorModule,
     FullCalendarModule,
     MatGridListModule,
-  ]
+    MatRadioModule,
+    MatDatepickerModule,
+    DatePipe,  
+  ],
+  providers: [
+    DatePipe 
+  ],
 })
 export class ModuloCitasModule { }

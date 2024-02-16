@@ -9,20 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { EditDoctorModalComponent } from '../doctores/edit-doctor-modal/edit-doctor-modal.component';
 import { ReactiveFormsModule } from '@angular/forms'; // Asegúrate de importar esto
 import { MatSortModule } from '@angular/material/sort';
-import { PacientesComponent } from '../Pacientes/pacientes.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
-import { HistorialComponent } from '../Pacientes/Historial-atenciones/historial.component';
 import { DialogCitaComponent } from '../citas/dialog-cita/dialog-cita.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PacientesService } from 'src/app/services/pacientes/pacientes.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { EditModalComponent } from '../Pacientes/edit-modal/edit-modal.component';
-import { DetalleHistorialComponent } from '../Pacientes/detalle-historia/detalle-historial-component';
 import { DialogService } from '../../services/dialog/dialog.service';
 
 
@@ -30,12 +27,8 @@ import { DialogService } from '../../services/dialog/dialog.service';
   declarations: [
     CreateDoctorModalComponent,
     EditDoctorModalComponent,
-    PacientesComponent,
-    HistorialComponent,
     DialogCitaComponent,
     EditModalComponent,
-DetalleHistorialComponent,
-
   ],
   imports: [
     CommonModule,

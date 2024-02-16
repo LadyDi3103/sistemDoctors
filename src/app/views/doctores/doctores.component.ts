@@ -15,7 +15,8 @@ export interface Doctor {
   // id: number,
   position: number;
   nom_medico: string;
-  cod_docum: number;
+  tip_docum: string;
+  num_docum: number;
   celular: string;
   email: string;
   direccion: string;
@@ -27,7 +28,7 @@ export interface Doctor {
   styleUrls: ['./doctores.component.css']
 })
 export class DoctoresComponent implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['nom_medico', 'cod_docum', 'celular', 'email', 'direccion', 'acciones'];
+  displayedColumns: string[] = ['nom_medico', 'num_docum', 'celular', 'email', 'direccion', 'acciones'];
   dataSource = new MatTableDataSource<Doctor>();
 
   showModalEdit: boolean = false;
@@ -78,7 +79,8 @@ export class DoctoresComponent implements AfterViewInit, OnInit {
   consultarMedicos(){
     this.medicosService.getAllMedicos().subscribe({
       next: (data:any) => {
-        this.dataSource.data = data;
+        console.log(data, 'DATA- CONSOLE');
+        this.dataSource.data = data.activeMedicos;
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         console.log(this.dataSource.data);
